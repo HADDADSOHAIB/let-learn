@@ -1,2 +1,20 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <div class="col-12 col-md-9 pr-0">
+    <%= render 'home/tab' %>
+    
+    <div class="card m-4">
+      <div class="card-body">
+        <p class="card-title">THOUGHTS ABOUT SOMETHING</p>
+        <form>
+          <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="d-none d-md-block col-md-3 border-left full-screen-right">
+    <p>placeholder</p>
+  </div>
+  
+</div>

@@ -7,6 +7,10 @@
   .full-screen {
     min-height: 100vh;
   }
+
+  .full-screen-right {
+    min-height: 88vh;
+  }
 }
 
 .vl {
@@ -23,4 +27,12 @@
 
 #list-tab > * {
   border-radius: 0px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.link-tab {
+  color: #111;
 }
