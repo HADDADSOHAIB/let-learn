@@ -2,3 +2,25 @@
 @import "font-awesome";
 @import "bootstrap";
 @import "*";
+
+@media only screen and (min-width: 768px) {
+  .full-screen {
+    min-height: 100vh;
+  }
+}
+
+.vl {
+  border-left: 1px solid #222;
+  height: 70px;
+}
+
+.list-group-item {
+  background-color: #343a40;
+  color: #eee;
+  border: none;
+  border-radius: 0px;
+}
+
+#list-tab > * {
+  border-radius: 0px;
+}
