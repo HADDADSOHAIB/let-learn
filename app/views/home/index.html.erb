@@ -5,11 +5,15 @@
     <div class="card m-4">
       <div class="card-body">
         <p class="card-title">THOUGHTS ABOUT SOMETHING</p>
-        <form>
-          <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <%= form_with(model: @thought, method: 'post', local: true) do |form| %>
+          <%= form.hidden_field :author_id, value: current_user.id %>
+          <div class="input-group">
+            <%= form.text_area(:text, rows: 2, class: "form-control") %>
+            <div class="input-group-append">
+              <%= form.submit 'Publish', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
+            </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
 
@@ -17,14 +21,14 @@
       <div class="card-body">
         <h5 class="card-title">New thoughts</h5>
         <hr>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <% if @thoughts.size.zero? %>
+          <p>You don't have any thoughts yet</p>
+        <% else %>
+          <%= render @thoughts %>
+        <% end %>
       </div>
     </div>
 
-    <% if current_user && current_user.photo.attached? %>
-      <%= image_tag current_user.photo, height: 100, width: 100 %>
-    <% end %>
   </div>
   <div class="col-12 col-md-3 border-left full-screen-right">
     <div>
