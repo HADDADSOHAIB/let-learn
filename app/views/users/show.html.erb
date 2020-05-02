@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col-12 col-md-9 pr-0">
     <div class="cover-image">
-      <%= image_tag "default-cover.jpg" %>
+      <% if @user.photo.attached? %>
+        <%= image_tag @user.cover_image %>
+      <% else %>
+        <%= image_tag "default-cover.jpg", height: 80, width: 80, class: "user-options" %>
+      <% end %>
     </div>
     <%= render 'home/tab' %>
     
@@ -24,34 +28,34 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
-
-    <% if current_user.photo.attached? %>
-      <%= image_tag current_user.photo, height: 100, width: 100 %>
-    <% end %>
   </div>
   <div class="col-12 col-md-3 border-left full-screen-right p-0">
     <div class="d-flex flex-column align-items-center">
       <div class="d-flex m-2 align-items-center">
         <button class="btn btn-outline-dark user-options mr-2 p-2"><i class="fas fa-plus"></i></button>
-        <%= image_tag current_user.photo, height: 80, width: 80, class: "user-options" %>
+        <% if @user.photo.attached? %>
+          <%= image_tag @user.photo, height: 80, width: 80, class: "user-options" %>
+        <% else %>
+          <%= image_tag "default-image.jpg", height: 80, width: 80, class: "user-options" %>
+        <% end %>
         <button class="btn btn-outline-dark user-options ml-2 p-2"><i class="fas fa-list"></i></button>
       </div>
-      <p class="mb-1">Full Name</p>
-      <small>@User Name</small>
+      <p class="mb-1"><%= @user.fullname %></p>
+      <small>@<%= @user.username %></small>
     </div>
     <hr class="mt-1 mb-0">
     <div class="row user-info">
       <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
         <small>Thoughts</small>
-        <small>300</small>
+        <small><%= @user.thoughts.size %></small>
       </div>
       <div class="col-4 px-0 py-2 border-left border-right d-flex flex-column align-items-center">
         <small>Followings</small>
-        <small>300</small>
+        <small><%= @user.followeds.size %></small>
       </div>
       <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
         <small>Followers</small>
-        <small>300</small>
+        <small><%= @user.followers.size %></small>
       </div>
     </div>
     <hr class="mt-0 mb-1">
