@@ -21,6 +21,10 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
+
+    <% if current_user.photo.attached? %>
+      <%= image_tag current_user.photo, height: 100, width: 100 %>
+    <% end %>
   </div>
   <div class="col-12 col-md-3 border-left full-screen-right">
     <div>

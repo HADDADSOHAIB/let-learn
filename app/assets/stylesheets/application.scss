@@ -5,10 +5,12 @@
 
 @media only screen and (min-width: 768px) {
   .full-screen {
+    height: 100%;
     min-height: 100vh;
   }
 
   .full-screen-right {
+    height: 100%;
     min-height: 88vh;
   }
 }
