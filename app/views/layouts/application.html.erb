@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <div class="container-fluid">
       <div class="row">
@@ -18,13 +17,11 @@
           </div>
           <div class="col-12 col-md-9 col-lg-10 p-0">
             <%= render 'layouts/navbar' %>
-            <%= render  "layouts/flash" %>
             <%= yield %>
           </div>
         <% else %>
           <div class="col-12 p-0">
             <%= render 'layouts/navbar' %>
-            <%= render  "layouts/flash" %>
             <%= yield %>
           </div>
         <% end %>

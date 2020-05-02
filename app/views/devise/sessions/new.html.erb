@@ -1,5 +1,6 @@
 <div class="d-flex align-items-center flex-column p-3 sign-in">
-  <div class="card" style="width: 25rem;">
+  <%= render  "layouts/flash" %>
+  <div class="card" style="width: 25rem;max-width: 100%;">
     <div class="card-body">
       <h5 class="card-title text-center">Sign In</h5>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
