@@ -50,3 +50,21 @@ body {
   width: 100%;
   height: 200px;
 }
+
+.user-options {
+  border-radius: 50%;
+}
+
+button.user-options {
+  height: fit-content;
+}
+
+
+img.user-options {
+  border: 1px #111 solid;
+}
+
+.user-info{
+  margin-right: 0;
+  margin-left:  0;
+}

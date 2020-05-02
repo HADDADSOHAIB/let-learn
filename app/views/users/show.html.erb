@@ -29,11 +29,32 @@
       <%= image_tag current_user.photo, height: 100, width: 100 %>
     <% end %>
   </div>
-  <div class="col-12 col-md-3 border-left full-screen-right">
-    <div>
-      
+  <div class="col-12 col-md-3 border-left full-screen-right p-0">
+    <div class="d-flex flex-column align-items-center">
+      <div class="d-flex m-2 align-items-center">
+        <button class="btn btn-outline-dark user-options mr-2 p-2"><i class="fas fa-plus"></i></button>
+        <%= image_tag current_user.photo, height: 80, width: 80, class: "user-options" %>
+        <button class="btn btn-outline-dark user-options ml-2 p-2"><i class="fas fa-list"></i></button>
+      </div>
+      <p class="mb-1">Full Name</p>
+      <small>@User Name</small>
     </div>
-    <hr>
+    <hr class="mt-1 mb-0">
+    <div class="row user-info">
+      <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
+        <small>Thoughts</small>
+        <small>300</small>
+      </div>
+      <div class="col-4 px-0 py-2 border-left border-right d-flex flex-column align-items-center">
+        <small>Followings</small>
+        <small>300</small>
+      </div>
+      <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
+        <small>Followers</small>
+        <small>300</small>
+      </div>
+    </div>
+    <hr class="mt-0 mb-1">
   </div>
   
 </div>
