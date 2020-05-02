@@ -12,14 +12,22 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="d-none d-md-block col-md-3 col-lg-2 p-0">
-          <%= render 'layouts/sidenav' %>
-        </div>
-        <div class="col-12 col-md-9 col-lg-10 p-0">
-          <%= render 'layouts/navbar' %>
-          <%= render  "layouts/flash" %>
-          <%= yield %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="d-none d-md-block col-md-3 col-lg-2 p-0">
+            <%= render 'layouts/sidenav' %>
+          </div>
+          <div class="col-12 col-md-9 col-lg-10 p-0">
+            <%= render 'layouts/navbar' %>
+            <%= render  "layouts/flash" %>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="col-12 p-0">
+            <%= render 'layouts/navbar' %>
+            <%= render  "layouts/flash" %>
+            <%= yield %>
+          </div>
+        <% end %>
       </div>
     </div>
   </body>

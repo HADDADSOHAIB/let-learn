@@ -1,4 +1,5 @@
 class ThoughtsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_thought, only: [:edit, :update, :destroy]
 
   def create

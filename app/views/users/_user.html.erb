@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-between align-items-center my-4 mx-2">
+  <div class="d-flex">
+    <% if user.photo.attached? %>
+      <%= image_tag user.photo, height: 60, width: 60, class: 'user-options' %>
+    <% else %>
+      <%= image_tag "default-photo.jpg", height: 60, width: 60, class: 'user-options' %>
+    <% end %>
+    <div class="ml-3 d-flex flex-column justify-content-center">
+      <p class="m-0"><%= user.fullname %></p>
+      <small class="mb-0"><%= user.username %></small>
+    </div>
+  </div>
+  
+  <button class="btn btn-outline-dark user-options mr-2 p-2"><i class="fas fa-plus"></i></button>
+</div>
