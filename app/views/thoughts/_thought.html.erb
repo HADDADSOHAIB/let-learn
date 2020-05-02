@@ -1,0 +1,11 @@
+<div class="d-flex m-2">
+  <% if thought.user.photo.attached? %>
+    <%= image_tag @user.photo, height: 80, width: 80, class: "user-options" %>
+  <% else %>
+    <%= image_tag "default-image.jpg", height: 80, width: 80, class: "user-options" %>
+  <% end %>
+  <div class="ml-2">
+    <p><%= thought.user.fullname %></p>
+    <p class="mb-0"><%= thought.text %></p>
+  </div>
+</div>

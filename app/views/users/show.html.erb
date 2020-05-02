@@ -24,9 +24,12 @@
       <div class="card-body">
         <h5 class="card-title">New thoughts</h5>
         <hr>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
+        <% if @user.thoughts.size.zero? %>
+          <p>You don't have any thoughts yet</p>
+        <% else %>
+          <%= @user.thoughts %>
+        <% end %>
+       </div>
     </div>
   </div>
   <div class="col-12 col-md-3 border-left full-screen-right p-0">
