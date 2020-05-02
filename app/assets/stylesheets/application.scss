@@ -3,6 +3,7 @@
 @import "bootstrap";
 @import "*";
 
+
 @media only screen and (min-width: 768px) {
   .full-screen {
     height: 100%;
@@ -33,6 +34,7 @@
 
 body {
   overflow-x: hidden;
+  margin: 0;
 }
 
 .link-tab {
@@ -41,4 +43,10 @@ body {
 
 .profile-picture {
   height: 40px;
+}
+
+.cover-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
 }
