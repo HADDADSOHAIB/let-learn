@@ -6,9 +6,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="d-md-none">
-      <%= render 'layouts/sidenav' %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="d-md-none">
+        <%= render 'layouts/sidenav' %>
+      </div>
+    <% end %>
 
     <ul class="navbar-nav ml-auto mr-2 flex-row justify-content-around">
       <li class="nav-item active m-2">
