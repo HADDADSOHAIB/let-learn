@@ -11,14 +11,20 @@
     <hr class="m-0">
     <div class="row user-info">
       <div class="col-6 px-0 py-2 border-right d-flex flex-column align-items-center border-secondary">
-        <small>Followings</small>
+        <small>
+          <%= link_to "Followings", followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+        </small>
         <small id="number-followings" data-toggle="modal" data-target="#myModal">
-        <%= link_to current_user.followeds.size, followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+          <%= link_to current_user.followeds.size, followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
         </small>
       </div>
       <div class="col-6 px-0 py-2 d-flex flex-column align-items-center">
-        <small>Followers</small>
-        <small><%= current_user.followers.size %></small>
+        <small>
+          <%= link_to "Followers", followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+        </small>
+        <small id="number-followings" data-toggle="modal" data-target="#myModal">
+          <%= link_to current_user.followers.size, followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+        </small>
       </div>
     </div>
     <hr class="my-0">

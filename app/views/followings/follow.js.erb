@@ -16,8 +16,17 @@ actionsf.number_followings = document.querySelector('#number-followings a');
 if(actionsf.number_followings)
 actionsf.number_followings.innerText = parseInt(actionsf.number_followings.innerText) + 1;
 
-actionsf.user_to_follow = document.querySelector('#user-<%= @user.id %>');
+actionsf.user_to_follow = document.querySelector('.home #user-<%= @user.id %>');
 if(actionsf.user_to_follow){
   actionsf.user_to_follow.parentElement.removeChild(actionsf.user_to_follow);
 }
+
+
+actionsf.follower_to_follow = document.querySelector('.followers-modal #user-<%= @user.id %>');
+actionsf.follower_to_follow_form = document.querySelector('.followers-modal #user-<%= @user.id %> #follow');
+if(actionsf.follower_to_follow_form){
+  actionsf.follower_to_follow_form.parentElement.removeChild(actionsf.follower_to_follow_form);
+  actionsf.follower_to_follow.insertAdjacentHTML('beforeEnd','<%= j render("users/unfollow", user: @user) %>');
+}
+
 

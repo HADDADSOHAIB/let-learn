@@ -29,4 +29,11 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def followers
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 end

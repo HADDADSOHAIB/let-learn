@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'follow', to: 'followings#follow', as: :follow
   post 'unfollow', to: 'followings#unfollow', as: :unfollow
   get 'followings', to: 'users#followings', as: :followings
+  get 'followers', to: 'users#followers', as: :followers
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

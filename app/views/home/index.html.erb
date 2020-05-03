@@ -35,7 +35,7 @@
       <p class="m-3">Who to follow</p>
     </div>
     <hr>
-    <div>
+    <div class="home">
     <% @to_follow.each do |user| %>
       <%= render 'users/user', user: user %>
     <% end %>
