@@ -1,6 +1,15 @@
-let follow = document.querySelector('#follow');
-if(follow){
-  follow.parentElement.removeChild(follow);
+
+actionsf.follow = document.querySelector('#follow');
+if(actionsf.follow){
+  actionsf.follow.parentElement.removeChild(actionsf.follow);
 }
 
-document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow") %>')
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow") %>');
+document.querySelector('.followers').insertAdjacentHTML('afterbegin','<%= j render("users/user", user: current_user) %>');
+
+actionsf.number_followers = document.querySelector('#number-followers');
+actionsf.number_followers.innerText = parseInt(actionsf.number_followers.innerText) + 1;
+
+actionsf.number_followings = document.querySelector('#number-followings');
+actionsf.number_followings.innerText = parseInt(actionsf.number_followings.innerText) + 1;
+

@@ -26,3 +26,7 @@ $(document).on('turbolinks:load', function(ev){
   });
 });
 
+
+let actionsf={};
+let actionsu={};
+

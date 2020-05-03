@@ -69,15 +69,15 @@
       </div>
       <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
         <small>Followers</small>
-        <small><%= @user.followers.size %></small>
+        <small id="number-followers"><%= @user.followers.size %></small>
       </div>
     </div>
     <hr class="mt-0 mb-1">
     <div>
-      <p class="m-3">Who to follow</p>
+      <p class="m-3">Followed by:</p>
     </div>
     <hr>
-    <div>
+    <div class="followers">
       <% @user.followers.each do |user| %>
         <%= render user %>
       <% end %>
