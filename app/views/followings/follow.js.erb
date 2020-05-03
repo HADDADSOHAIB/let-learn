@@ -1,1 +1,6 @@
-console.log("Hola");
+let follow = document.querySelector('#follow');
+if(follow){
+  follow.parentElement.removeChild(follow);
+}
+
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow") %>')

@@ -1,0 +1,6 @@
+let unfollow = document.querySelector('#unfollow');
+if(unfollow){
+  unfollow.parentElement.removeChild(unfollow);
+}
+
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/follow") %>')

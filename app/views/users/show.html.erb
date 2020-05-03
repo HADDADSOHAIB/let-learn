@@ -41,23 +41,11 @@
   </div>
   <div class="col-12 col-md-3 border-left full-screen-right p-0">
     <div class="d-flex flex-column align-items-center">
-      <div class="d-flex m-2 align-items-center">
+      <div class="d-flex m-2 align-items-center show-options">
         <% if following?(@user) %>
-          <%= form_with(url: unfollow_path, method: 'post') do |f| %>
-            <%= hidden_field(:follow, :followed_id, value: @user.id) %>
-            <%= hidden_field(:follow, :follower_id, value: current_user.id) %>
-            <div class="actions">
-              <%= f.button '<i class="fas fa-times"></i>'.html_safe, class: "btn btn-outline-dark user-options mr-2 p-2" %>
-            </div>
-          <% end %>
+          <%= render 'users/unfollow' %>
         <% else %>
-          <%= form_with(url: follow_path, method: 'post') do |f| %>
-            <%= hidden_field(:follow, :followed_id, value: @user.id) %>
-            <%= hidden_field(:follow, :follower_id, value: current_user.id) %>
-            <div class="actions">
-              <%= f.button '<i class="fas fa-plus"></i>'.html_safe, class: "btn btn-outline-dark user-options mr-2 p-2" %>
-            </div>
-          <% end %>
+          <%= render 'users/follow' %>
         <% end %>
         <% if @user.photo.attached? %>
           <%= image_tag @user.photo, height: 80, width: 80, class: "user-options" %>

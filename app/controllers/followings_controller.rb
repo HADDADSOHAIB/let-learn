@@ -3,6 +3,7 @@ class FollowingsController < ApplicationController
 
   def follow
     following = Following.new(following_params)
+    @user = following.followed
     if following.save
       respond_to do |format|
         format.js {render :follow}
@@ -11,7 +12,8 @@ class FollowingsController < ApplicationController
   end
 
   def unfollow
-    following = Following.where(following_params)
+    following = Following.find_by(following_params)
+    @user = following.followed
     if following.destroy
       respond_to do |format|
         format.js {render :unfollow}
