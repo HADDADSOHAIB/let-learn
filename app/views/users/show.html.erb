@@ -44,7 +44,7 @@
       <div class="d-flex m-2 align-items-center show-options">
         <% if following?(@user) %>
           <%= render 'users/unfollow', user: @user %>
-        <% else %>
+        <% elsif @user != current_user %>
           <%= render 'users/follow', user: @user %>
         <% end %>
         <% if @user.photo.attached? %>

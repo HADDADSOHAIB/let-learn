@@ -22,4 +22,11 @@ class UsersController < ApplicationController
     @thought = Thought.new
     render 'show'
   end
+
+  def followings
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 end

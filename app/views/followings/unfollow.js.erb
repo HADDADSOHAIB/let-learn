@@ -12,10 +12,15 @@ if(actionsu.current_user){
   actionsu.current_user.parentElement.removeChild(actionsu.current_user);
 }
 
+actionsu.user = document.querySelector('#user-<%= @user.id %>');
+if(actionsu.user){
+  actionsu.user.parentElement.removeChild(actionsu.user);
+}
+
 actionsu.number_followers = document.querySelector('#number-followers');
 if(actionsu.number_followers)
 actionsu.number_followers.innerText = parseInt(actionsu.number_followers.innerText) - 1;
 
-actionsu.number_followings = document.querySelector('#number-followings');
+actionsu.number_followings = document.querySelector('#number-followings a');
 if(actionsu.number_followings)
 actionsu.number_followings.innerText = parseInt(actionsu.number_followings.innerText) - 1;

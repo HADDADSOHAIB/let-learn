@@ -12,7 +12,9 @@
     <div class="row user-info">
       <div class="col-6 px-0 py-2 border-right d-flex flex-column align-items-center border-secondary">
         <small>Followings</small>
-        <small id="number-followings"><%= current_user.followeds.size %></small>
+        <small id="number-followings" data-toggle="modal" data-target="#myModal">
+        <%= link_to current_user.followeds.size, followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+        </small>
       </div>
       <div class="col-6 px-0 py-2 d-flex flex-column align-items-center">
         <small>Followers</small>
