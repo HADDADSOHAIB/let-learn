@@ -1,23 +1,28 @@
 <div class="full-screen bg-dark text-white  sticky-top position-sticky">
   <div class="sticky-top position-sticky">
     <div class="d-flex justify-content-center align-items-center p-3">
-      <%= image_tag "pic.jpg", class: "profile-picture" %>
-      <p class="mb-0 ml-3" >Sohaib haddad</p>
+      <% if current_user.photo.attached? %>
+        <%= image_tag current_user.photo, class: "profile-picture" %>
+      <% else %>
+        <%= image_tag "default-photo.jpg", class: "profile-picture" %>
+      <% end %>
+      <p class="mb-0 ml-3" ><%= current_user.fullname %></p>
     </div>
     <hr class="m-0">
-    <div class="d-flex justify-content-center">
-      <div class="align-items-center d-flex  w-50 justify-content-center">
-        <p class="m-0">test</p>
+    <div class="row user-info">
+      <div class="col-6 px-0 py-2 border-right d-flex flex-column align-items-center border-secondary">
+        <small>Followings</small>
+        <small><%= current_user.followeds.size %></small>
       </div>
-      <div class="vl"></div>
-      <div class="align-items-center d-flex w-50 justify-content-center">
-        <p class="m-0">test </p>
+      <div class="col-6 px-0 py-2 d-flex flex-column align-items-center">
+        <small>Followers</small>
+        <small><%= current_user.followers.size %></small>
       </div>
     </div>
     <hr class="my-0">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+      <%= link_to  "Home", root_path, class: "list-group-item list-group-item-action sidenav-link", id: "list-home-list", role: "tab" %>
+      <%= link_to  "Profile", me_path, class: "list-group-item list-group-item-action sidenav-link", id: "list-profile-list", role: "tab" %>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
       <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
     </div>
