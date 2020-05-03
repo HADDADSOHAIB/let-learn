@@ -43,9 +43,9 @@
     <div class="d-flex flex-column align-items-center">
       <div class="d-flex m-2 align-items-center show-options">
         <% if following?(@user) %>
-          <%= render 'users/unfollow' %>
+          <%= render 'users/unfollow', user: @user %>
         <% else %>
-          <%= render 'users/follow' %>
+          <%= render 'users/follow', user: @user %>
         <% end %>
         <% if @user.photo.attached? %>
           <%= image_tag @user.photo, height: 80, width: 80, class: "user-options" %>

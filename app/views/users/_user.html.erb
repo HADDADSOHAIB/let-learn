@@ -10,6 +10,9 @@
       <small class="mb-0"><%= link_to  user.username, user_path(user), class: "black-color" %></small>
     </div>
   </div>
-  
-  <button class="btn btn-outline-dark user-options mr-2 p-2"><i class="fas fa-plus"></i></button>
+  <% if following?(user) %>
+    <%= render 'users/unfollow', user: user %>
+  <% else %>
+    <%= render 'users/follow', user: user %>
+  <% end %>
 </div>

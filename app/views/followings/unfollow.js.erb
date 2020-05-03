@@ -3,14 +3,19 @@ if(actionsu.unfollow){
   actionsu.unfollow.parentElement.removeChild(actionsu.unfollow);
 }
 
-document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/follow") %>');
+if(document.querySelector('.show-options'))
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/follow", user: @user) %>');
+
+
 actionsu.current_user = document.querySelector('#user-<%= current_user.id %>');
 if(actionsu.current_user){
   actionsu.current_user.parentElement.removeChild(actionsu.current_user);
 }
 
 actionsu.number_followers = document.querySelector('#number-followers');
+if(actionsu.number_followers)
 actionsu.number_followers.innerText = parseInt(actionsu.number_followers.innerText) - 1;
 
 actionsu.number_followings = document.querySelector('#number-followings');
-actionsu.number_followings.innerText = parseInt(actionsf.number_followings.innerText) - 1;
+if(actionsu.number_followings)
+actionsu.number_followings.innerText = parseInt(actionsu.number_followings.innerText) - 1;

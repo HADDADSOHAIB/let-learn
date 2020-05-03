@@ -3,13 +3,21 @@ actionsf.follow = document.querySelector('#follow');
 if(actionsf.follow){
   actionsf.follow.parentElement.removeChild(actionsf.follow);
 }
-
-document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow") %>');
+if(document.querySelector('.show-options'))
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow", user: @user) %>');
+if(document.querySelector('.followers'))
 document.querySelector('.followers').insertAdjacentHTML('afterbegin','<%= j render("users/user", user: current_user) %>');
 
 actionsf.number_followers = document.querySelector('#number-followers');
+if(actionsf.number_followers)
 actionsf.number_followers.innerText = parseInt(actionsf.number_followers.innerText) + 1;
 
 actionsf.number_followings = document.querySelector('#number-followings');
+if(actionsf.number_followings)
 actionsf.number_followings.innerText = parseInt(actionsf.number_followings.innerText) + 1;
+
+actionsf.user_to_follow = document.querySelector('#user-<%= @user.id %>');
+if(actionsf.user_to_follow){
+  actionsf.user_to_follow.parentElement.removeChild(actionsf.user_to_follow);
+}
 
