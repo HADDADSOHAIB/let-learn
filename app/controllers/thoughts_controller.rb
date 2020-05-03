@@ -3,8 +3,6 @@ class ThoughtsController < ApplicationController
   before_action :set_thought, only: [:edit, :update, :destroy]
 
   def create
-    puts "hiiii"
-    p thought_params
     @thought = Thought.new(thought_params)
 
     respond_to do |format|

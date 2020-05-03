@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12 col-md-9 pr-0">
     <div class="cover-image">
-      <% if @user.photo.attached? %>
+      <% if @user.cover_image.attached? %>
         <%= image_tag @user.cover_image %>
       <% else %>
         <%= image_tag "default-cover.jpg" %>
@@ -13,11 +13,15 @@
     <div class="card m-4">
       <div class="card-body">
         <p class="card-title">THOUGHTS ABOUT SOMETHING</p>
-        <form>
-          <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <%= form_with(model: @thought, method: 'post', local: true) do |form| %>
+          <%= form.hidden_field :author_id, value: current_user.id %>
+          <div class="input-group">
+            <%= form.text_area(:text, rows: 2, class: "form-control") %>
+            <div class="input-group-append">
+              <%= form.submit 'Publish', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
+            </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
 
@@ -38,7 +42,23 @@
   <div class="col-12 col-md-3 border-left full-screen-right p-0">
     <div class="d-flex flex-column align-items-center">
       <div class="d-flex m-2 align-items-center">
-        <button class="btn btn-outline-dark user-options mr-2 p-2"><i class="fas fa-plus"></i></button>
+        <% if following?(@user) %>
+          <%= form_with(url: unfollow_path, method: 'post') do |f| %>
+            <%= hidden_field(:follow, :followed_id, value: @user.id) %>
+            <%= hidden_field(:follow, :follower_id, value: current_user.id) %>
+            <div class="actions">
+              <%= f.button '<i class="fas fa-times"></i>'.html_safe, class: "btn btn-outline-dark user-options mr-2 p-2" %>
+            </div>
+          <% end %>
+        <% else %>
+          <%= form_with(url: follow_path, method: 'post') do |f| %>
+            <%= hidden_field(:follow, :followed_id, value: @user.id) %>
+            <%= hidden_field(:follow, :follower_id, value: current_user.id) %>
+            <div class="actions">
+              <%= f.button '<i class="fas fa-plus"></i>'.html_safe, class: "btn btn-outline-dark user-options mr-2 p-2" %>
+            </div>
+          <% end %>
+        <% end %>
         <% if @user.photo.attached? %>
           <%= image_tag @user.photo, height: 80, width: 80, class: "user-options" %>
         <% else %>

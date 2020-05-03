@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     else
       begin
         @user=User.find(params[:id]);
+        @thought = Thought.new
       rescue ActiveRecord::RecordNotFound
         flash[:alert]="User does not exist"
         redirect_to root_path
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def me
     @user=current_user
+    @thought = Thought.new
     render 'show'
   end
 end
