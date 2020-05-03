@@ -2,11 +2,11 @@
   <div class="sticky-top position-sticky">
     <div class="d-flex justify-content-center align-items-center p-3">
       <% if current_user.photo.attached? %>
-        <%= image_tag current_user.photo, class: "profile-picture" %>
+      <%= link_to(image_tag(current_user.photo, class: "profile-picture"), me_path) %>
       <% else %>
-        <%= image_tag "default-photo.jpg", class: "profile-picture" %>
+        <%= link_to(image_tag("default-photo.jpg", class: "profile-picture"), me_path) %>
       <% end %>
-      <p class="mb-0 ml-3" ><%= current_user.fullname %></p>
+      <p class="mb-0 ml-3" ><%= link_to current_user.fullname, me_path, class: "white-color" %></p>
     </div>
     <hr class="m-0">
     <div class="row user-info">

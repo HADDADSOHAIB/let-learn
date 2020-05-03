@@ -1,11 +1,11 @@
 <div class="d-flex my-4 mx-2">
   <% if thought.author.photo.attached? %>
-    <%= image_tag thought.author.photo, height: 80, width: 80 %>
+    <%= link_to(image_tag(thought.author.photo, height: 80, width: 80), user_path(thought.author)) %>
   <% else %>
-    <%= image_tag "default-image.jpg", height: 80, width: 80 %>
+    <%= link_to(image_tag("default-image.jpg", height: 80, width: 80), user_path(thought.author)) %>
   <% end %>
   <div class="ml-2">
-    <p><%= thought.author.fullname %></p>
+    <p><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
     <p class="mb-0"><%= thought.text %></p>
   </div>
 </div>

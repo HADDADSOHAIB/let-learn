@@ -4,7 +4,7 @@
       <% if @user.photo.attached? %>
         <%= image_tag @user.cover_image %>
       <% else %>
-        <%= image_tag "default-cover.jpg", height: 80, width: 80, class: "user-options" %>
+        <%= image_tag "default-cover.jpg" %>
       <% end %>
     </div>
     <%= render 'home/tab' %>
@@ -23,7 +23,7 @@
 
     <div class="card m-4">
       <div class="card-body">
-        <h5 class="card-title">New thoughts</h5>
+        <h5 class="card-title">User thoughts</h5>
         <hr>
         <% if @user.thoughts.size.zero? %>
           <p>You don't have any thoughts yet</p>

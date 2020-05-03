@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-between align-items-center my-4 mx-2">
   <div class="d-flex">
     <% if user.photo.attached? %>
-      <%= image_tag user.photo, height: 60, width: 60, class: 'user-options' %>
+      <%= link_to(image_tag(user.photo, height: 60, width: 60, class: 'user-options'), user_path(user)) %>
     <% else %>
-      <%= image_tag "default-photo.jpg", height: 60, width: 60, class: 'user-options' %>
+      <%= link_to(image_tag("default-photo.jpg", height: 60, width: 60, class: 'user-options'), user_path(user)) %>
     <% end %>
     <div class="ml-3 d-flex flex-column justify-content-center">
-      <p class="m-0"><%= user.fullname %></p>
-      <small class="mb-0"><%= user.username %></small>
+      <p class="m-0"><%= link_to  user.fullname, user_path(user), class: "black-color" %></p>
+      <small class="mb-0"><%= link_to  user.username, user_path(user), class: "black-color" %></small>
     </div>
   </div>
   
