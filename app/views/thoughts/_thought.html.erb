@@ -7,7 +7,12 @@
   <div class="ml-2">
     <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
     <small class="mb-0"><%= thought.text %></small>
-    <div>
+    <div class="thought-options">
+      <% if like?(thought, current_user) %>
+        <%= link_to "<i class='fas fa-heart'></i>".html_safe, unlike_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'unlike-options'}  %>
+      <% else %>
+        <%= link_to "<i class='far fa-heart'></i>".html_safe, like_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'like-options'}  %>
+      <% end %>
       <% if thought.author == current_user %>
         <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'opacity-half'}  %>
         <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, thought_path(thought), {:remote => true, class: 'opacity-half', method: :delete, data: { confirm: 'Are you sure about deleting the thought?' }} %>

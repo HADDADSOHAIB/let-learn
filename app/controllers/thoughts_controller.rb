@@ -37,6 +37,7 @@ class ThoughtsController < ApplicationController
 
   def destroy
     @thought.destroy
+
     respond_to do |format|
       format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
       format.json { head :no_content }
@@ -45,11 +46,11 @@ class ThoughtsController < ApplicationController
   end
 
   private
-    def set_thought
-      @thought = Thought.find(params[:id])
-    end
+  def set_thought
+    @thought = Thought.find(params[:id])
+  end
 
-    def thought_params
-      params.require(:thought).permit(:text, :author_id)
-    end
+  def thought_params
+    params.require(:thought).permit(:text, :author_id)
+  end
 end

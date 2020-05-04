@@ -22,4 +22,6 @@ class User < ApplicationRecord
 
   has_many :relation_followeds, foreign_key: :follower_id, class_name: 'Following'
   has_many :followeds, through: :relation_followeds
+
+  has_many :likes, dependent: :destroy
 end

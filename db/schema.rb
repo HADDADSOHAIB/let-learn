@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_122303) do
+ActiveRecord::Schema.define(version: 2020_05_04_200305) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2020_05_02_122303) do
     t.index ["follower_id"], name: "index_followings_on_follower_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "thought_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thought_id"], name: "index_likes_on_thought_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "thoughts", force: :cascade do |t|
     t.text "text"
     t.integer "author_id"
@@ -63,4 +72,5 @@ ActiveRecord::Schema.define(version: 2020_05_02_122303) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end

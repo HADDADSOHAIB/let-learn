@@ -1,0 +1,7 @@
+if(document.querySelector('#thought-<%= @thought.id %> #unlike-options')){
+  document.querySelector('#thought-<%= @thought.id %> #unlike-options')
+    .parentElement.removeChild(document.querySelector('#thought-<%= @thought.id %> #unlike-options'));
+}
+
+document.querySelector('#thought-<%= @thought.id %> .thought-options')
+  .insertAdjacentHTML('afterbegin',`<%= j link_to("<i class='far fa-heart'></i>".html_safe, like_path(@thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'like-options'})  %>`);

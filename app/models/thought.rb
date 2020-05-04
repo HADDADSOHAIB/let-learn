@@ -1,5 +1,7 @@
 class Thought < ApplicationRecord
   belongs_to :author, class_name: 'User'
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 
   validates :text, :author_id, presence: true
   validates :text, length: { maximum: 150 }
