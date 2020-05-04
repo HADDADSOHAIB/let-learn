@@ -40,7 +40,7 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
       format.json { head :no_content }
-      format.js
+      format.js { render :destroy}
     end
   end
 
