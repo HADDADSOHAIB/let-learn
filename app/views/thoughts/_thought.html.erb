@@ -7,5 +7,10 @@
   <div class="ml-2">
     <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
     <small class="mb-0"><%= thought.text %></small>
+    <div>
+      <% if thought.author == current_user %>
+        <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'opacity-half'}  %>
+      <% end %>
+    </div>
   </div>
 </div>

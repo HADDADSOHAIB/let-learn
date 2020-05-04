@@ -16,13 +16,20 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def update
+
     respond_to do |format|
       if @thought.update(thought_params)
-        format.html { redirect_to @thought, notice: 'Thought was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Thought was successfully updated.' }
         format.json { render :show, status: :ok, location: @thought }
       else
-        format.html { render :edit }
+        format.html { redirect_to root_path }
         format.json { render json: @thought.errors, status: :unprocessable_entity }
       end
     end
