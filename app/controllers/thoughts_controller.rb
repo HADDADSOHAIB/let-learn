@@ -10,7 +10,7 @@ class ThoughtsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Thought was successfully created.' }
         format.json { render :show, status: :created, location: @thought }
       else
-        format.html { redirect_to root_path, alert: 'Error while creating the thought' }
+        format.html { redirect_to root_path, alert: @thought.errors.full_messages.join(". ") }
         format.json { render json: @thought.errors, status: :unprocessable_entity }
       end
     end

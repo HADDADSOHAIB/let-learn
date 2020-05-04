@@ -13,15 +13,7 @@
     <div class="card m-4">
       <div class="card-body">
         <p class="card-title">THOUGHTS ABOUT SOMETHING</p>
-        <%= form_with(model: @thought, method: 'post', local: true) do |form| %>
-          <%= form.hidden_field :author_id, value: current_user.id %>
-          <div class="input-group">
-            <%= form.text_area(:text, rows: 2, class: "form-control") %>
-            <div class="input-group-append">
-              <%= form.submit 'Publish', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'thoughts/new_thought' %>
       </div>
     </div>
 
