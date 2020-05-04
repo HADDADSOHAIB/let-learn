@@ -10,6 +10,7 @@
     <div>
       <% if thought.author == current_user %>
         <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'opacity-half'}  %>
+        <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, thought_path(thought), {:remote => true, class: 'opacity-half', method: :delete} %>
       <% end %>
     </div>
   </div>
