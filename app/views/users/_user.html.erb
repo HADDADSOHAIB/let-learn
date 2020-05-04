@@ -10,9 +10,9 @@
       <small class="mb-0"><%= link_to  user.username, user_path(user), class: "black-color" %></small>
     </div>
   </div>
-  <% if following?(user) %>
+  <% if following?(user) && show %>
     <%= render 'users/unfollow', user: user %>
-  <% elsif @user != current_user %>
+  <% elsif user != current_user && show %>
     <%= render 'users/follow', user: user %>
   <% end %>
 </div>

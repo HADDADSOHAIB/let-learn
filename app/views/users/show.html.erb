@@ -79,7 +79,7 @@
     <hr>
     <div class="followers">
       <% @user.followers.each do |user| %>
-        <%= render user %>
+        <%= render user, show: false %>
       <% end %>
     </div>
   </div>

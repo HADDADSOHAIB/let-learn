@@ -37,7 +37,7 @@
     <hr>
     <div class="home">
     <% @to_follow.each do |user| %>
-      <%= render 'users/user', user: user %>
+      <%= render 'users/user', user: user, show: true %>
     <% end %>
     </div>
   </div>

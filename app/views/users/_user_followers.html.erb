@@ -9,7 +9,7 @@
     <p>Nobody is following yet</p>
   <% else %>
     <% user.followers.each do |u| %>
-      <%= render 'users/user', user: u %>
+      <%= render 'users/user', user: u, show: false %>
     <% end %>
   <% end %>
 </div>

@@ -4,7 +4,7 @@ if(actionsu.unfollow){
 }
 
 if(document.querySelector('.show-options'))
-document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/follow", user: @user) %>');
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/follow", user: @user,  show: true) %>');
 
 
 actionsu.current_user = document.querySelector('#user-<%= current_user.id %>');

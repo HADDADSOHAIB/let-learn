@@ -4,12 +4,12 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body" >
+<div class="modal-body followings-modal" >
   <% if user.followeds.size.zero? %>
     <p>You don't follow anyone yet</p>
   <% else %>
     <% user.followeds.each do |u| %>
-      <%= render 'users/user', user: u %>
+      <%= render 'users/user', user: u,  show: false %>
     <% end %>
   <% end %>
 </div>
