@@ -3,4 +3,6 @@ class Thought < ApplicationRecord
 
   validates :text, :author_id, presence: true
   validates :text, length: { maximum: 150 }
+
+  scope :time_line, ->current_user { where(author: current_user.followeds).or(where(author: current_user)).includes(author: [:photo_attachment, :cover_image_attachment]).order(updated_at: :desc) }
 end
