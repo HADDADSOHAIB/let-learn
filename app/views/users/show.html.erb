@@ -77,11 +77,10 @@
       <p class="m-3">Followed by:</p>
     </div>
     <hr>
-    <div class="followers">
+    <div class="user-followers">
       <% @user.followers.each do |user| %>
         <%= render user, show: false %>
       <% end %>
     </div>
   </div>
-  
 </div>

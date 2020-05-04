@@ -5,8 +5,8 @@ if(actionsf.follow){
 }
 if(document.querySelector('.show-options'))
 document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow", user: @user) %>');
-if(document.querySelector('.followers'))
-document.querySelector('.followers').insertAdjacentHTML('afterbegin','<%= j render("users/user", user: current_user,  show: true) %>');
+if(document.querySelector('.user-followers'))
+document.querySelector('.user-followers').insertAdjacentHTML('afterbegin','<%= j render("users/user", user: current_user,  show: false) %>');
 
 actionsf.number_followers = document.querySelector('#number-followers');
 if(actionsf.number_followers)
@@ -20,12 +20,3 @@ actionsf.user_to_follow = document.querySelector('.home #user-<%= @user.id %>');
 if(actionsf.user_to_follow){
   actionsf.user_to_follow.parentElement.removeChild(actionsf.user_to_follow);
 }
-
-actionsf.follower_to_follow = document.querySelector('.followers-modal #user-<%= @user.id %>');
-actionsf.follower_to_follow_form = document.querySelector('.followers-modal #user-<%= @user.id %> #follow');
-if(actionsf.follower_to_follow_form){
-  actionsf.follower_to_follow_form.parentElement.removeChild(actionsf.follower_to_follow_form);
-  actionsf.follower_to_follow.insertAdjacentHTML('beforeEnd','<%= j render("users/unfollow", user: @user) %>');
-}
-
-
