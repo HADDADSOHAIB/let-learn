@@ -6,33 +6,35 @@
       <% else %>
         <%= link_to(image_tag("default-photo.jpg", class: "profile-picture"), me_path) %>
       <% end %>
-      <p class="mb-0 ml-3" ><%= link_to current_user.fullname, me_path, class: "white-color" %></p>
+      <p class="mb-0 ml-3 opacity-half" ><%= link_to current_user.fullname, me_path, class: "white-color opacity-half" %></p>
     </div>
     <hr class="m-0">
     <div class="row user-info">
       <div class="col-6 px-0 py-2 border-right d-flex flex-column align-items-center border-secondary">
-        <small>
-          <%= link_to "Followings", followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
-        </small>
         <small id="number-followings" data-toggle="modal" data-target="#myModal">
           <%= link_to current_user.followeds.size, followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
         </small>
+        <small>
+          <%= link_to "Followings", followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
+        </small>
       </div>
       <div class="col-6 px-0 py-2 d-flex flex-column align-items-center">
-        <small>
-          <%= link_to "Followers", followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
-        </small>
         <small id="number-followings" data-toggle="modal" data-target="#myModal">
           <%= link_to current_user.followers.size, followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
         </small>
+        <small>
+          <%= link_to "Followers", followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
+        </small>
+        
       </div>
     </div>
     <hr class="my-0">
+    
     <div class="list-group" id="list-tab" role="tablist">
-      <%= link_to  "Home", root_path, class: "list-group-item list-group-item-action sidenav-link", id: "list-home-list", role: "tab" %>
-      <%= link_to  "Profile", me_path, class: "list-group-item list-group-item-action sidenav-link", id: "list-profile-list", role: "tab" %>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+      <%= link_to  "<i class='fas fa-home mr-2'></i>HOME".html_safe, root_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "list-home-list", role: "tab" %>
+      <%= link_to  "<i class='fas fa-user-alt mr-2'></i>PROFILE".html_safe, me_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "list-profile-list", role: "tab" %>
+      <a class="opacity-half list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages"><i class="far fa-envelope mr-2"></i>MESSAGES</a>
+      <%= link_to  "<i class='fas fa-sign-out-alt mr-2'></i>LOGOUT".html_safe, destroy_user_session_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "list-profile-list", role: "tab", method: :delete %>
     </div>
   </div>
 </div>

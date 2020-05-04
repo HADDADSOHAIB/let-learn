@@ -22,7 +22,7 @@
 $(document).on('turbolinks:load', function(ev){
   let links=document.querySelectorAll('.sidenav-link');
   links.forEach(link => {
-    link.className = `list-group-item list-group-item-action sidenav-link ${link.href.split('/')[3] === window.location.pathname.slice(1) ? "active" : ""}`;
+    link.className = `opacity-half list-group-item list-group-item-action sidenav-link ${link.href.split('/')[3] === window.location.pathname.slice(1) ? "active" : ""}`;
   });
 });
 

@@ -44,24 +44,24 @@
         <% else %>
           <%= image_tag "default-photo.jpg", height: 80, width: 80, class: "user-options" %>
         <% end %>
-        <button class="btn btn-outline-dark user-options ml-2 p-2"><i class="fas fa-list"></i></button>
+        <button class="opacity-half btn btn-outline-dark user-options ml-2 p-2"><i class="fas fa-list"></i></button>
       </div>
       <p class="mb-1"><%= @user.fullname %></p>
-      <small>@<%= @user.username %></small>
+      <small class="opacity-half">@<%= @user.username %></small>
     </div>
     <hr class="mt-1 mb-0">
     <div class="row user-info">
       <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
-        <small>Thoughts</small>
         <small><%= @user.thoughts.size %></small>
+        <small class="opacity-half">Thoughts</small>
       </div>
       <div class="col-4 px-0 py-2 border-left border-right d-flex flex-column align-items-center">
-        <small>Followings</small>
         <small><%= @user.followeds.size %></small>
+        <small class="opacity-half">Followings</small>
       </div>
       <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
-        <small>Followers</small>
         <small id="number-followers"><%= @user.followers.size %></small>
+        <small class="opacity-half">Followers</small>
       </div>
     </div>
     <hr class="mt-0 mb-1">

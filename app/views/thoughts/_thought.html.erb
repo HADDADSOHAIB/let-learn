@@ -5,7 +5,7 @@
     <%= link_to(image_tag("default-image.jpg", height: 80, width: 80), user_path(thought.author)) %>
   <% end %>
   <div class="ml-2">
-    <p><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
-    <p class="mb-0"><%= thought.text %></p>
+    <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
+    <small class="mb-0"><%= thought.text %></small>
   </div>
 </div>
