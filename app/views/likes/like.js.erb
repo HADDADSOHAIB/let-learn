@@ -1,7 +1,9 @@
 if(document.querySelector('#thought-<%= @thought.id %> #like-options')){
+  $('#thought-<%= @thought.id %> #like-options').tooltip('hide');
   document.querySelector('#thought-<%= @thought.id %> #like-options')
     .parentElement.removeChild(document.querySelector('#thought-<%= @thought.id %> #like-options'));
 }
 
 document.querySelector('#thought-<%= @thought.id %> .thought-options')
-  .insertAdjacentHTML('afterbegin',`<%= j link_to("<i class='fas fa-heart'></i>".html_safe, unlike_path(@thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'unlike-options'})  %>`);
+  .insertAdjacentHTML('afterbegin',"<%= j render 'likes/unlike_button', thought: @thought %>");
+$('#thought-<%= @thought.id %> #unlike-options').tooltip('show');

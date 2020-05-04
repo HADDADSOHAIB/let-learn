@@ -9,14 +9,17 @@
     <small class="mb-0"><%= thought.text %></small>
     <div class="thought-options">
       <% if like?(thought, current_user) %>
-        <%= link_to "<i class='fas fa-heart'></i>".html_safe, unlike_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'unlike-options'}  %>
+        <%= render 'likes/unlike_button', thought: thought %>
       <% else %>
-        <%= link_to "<i class='far fa-heart'></i>".html_safe, like_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'like-options'}  %>
+        <%= render 'likes/like_button', thought: thought %>
       <% end %>
       <% if thought.author == current_user %>
-        <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'opacity-half'}  %>
-        <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, thought_path(thought), {:remote => true, class: 'opacity-half', method: :delete, data: { confirm: 'Are you sure about deleting the thought?' }} %>
+        <span data-toggle="tooltip" data-placement="bottom" data-title="Edit">
+          <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, class: 'opacity-half', data: {target: "#modal-window", toggle: "modal"}}  %>
+        </span>
+        <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, thought_path(thought), {:remote => true, class: 'opacity-half', method: :delete, data: {confirm: 'Are you sure about deleting the thought?', toggle: "tooltip", placement: "bottom", title: "Delete"}} %>
       <% end %>
     </div>
   </div>
 </div>
+

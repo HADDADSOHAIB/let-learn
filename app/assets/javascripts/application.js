@@ -13,9 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
+//= require popper
 //= require bootstrap-sprockets
 //= require bootstrap
-//= require popper
+
 //= require turbolinks
 //= require_tree .
 
@@ -26,8 +27,8 @@ $(document).on('turbolinks:load', function(ev){
   });
 });
 
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 let actionsf={};

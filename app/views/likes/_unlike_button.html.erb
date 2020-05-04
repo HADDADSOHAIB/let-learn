@@ -1,0 +1,1 @@
+<%= link_to "<i class='fas fa-heart'></i>".html_safe, unlike_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'unlike-options', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.likes.size, "like")}, you like this post."}}  %>

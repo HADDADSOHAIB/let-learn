@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   def like
     @like = Like.new(thought: @thought, user: current_user)
   
-    if @like.save
+    if @thought && @like.save
       respond_to do |format|
         format.js {render :like}
       end
@@ -13,7 +13,7 @@ class LikesController < ApplicationController
 
   def unlike
     @like = Like.find_by(thought: @thought, user: current_user)
-    if @like.destroy
+    if @thought && @like.destroy
       respond_to do |format|
         format.js {render :unlike}
       end
