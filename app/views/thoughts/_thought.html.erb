@@ -4,10 +4,13 @@
   <% else %>
     <%= link_to(image_tag("default-image.jpg", height: 80, width: 80), user_path(thought.author)) %>
   <% end %>
-  <div class="ml-2">
-    <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
+  <div class="ml-2 w-100">
+    <div class="d-flex justify-content-between">
+      <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
+      <small class="opacity-half"><%=  time_ago_in_words(thought.updated_at) %></small>
+    </div>
     <small class="mb-0"><%= thought.text %></small>
-    <div class="thought-options">
+    <div class="thought-options d-flex justify-content-around  mt-1">
       <% if like?(thought, current_user) %>
         <%= render 'likes/unlike_button', thought: thought %>
       <% else %>
