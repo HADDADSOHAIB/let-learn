@@ -23,14 +23,15 @@ class CommentsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @like = Like.find_by(thought: @thought, user: current_user)
-  #   if @thought && @like.destroy
-  #     respond_to do |format|
-  #       format.js {render :unlike}
-  #     end
-  #   end
-  # end
+  def destroy
+    @comment = Comment.find(params[:id])
+    
+    if @comment.destroy
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
 
   private
   def set_thought
