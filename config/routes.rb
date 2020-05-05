@@ -5,13 +5,13 @@ Rails.application.routes.draw do
     resource :comments, only: [:show]
   end
   devise_for :users
-  resources :users, only: [:show]
-  get 'me', to: 'users#me'
-  post 'follow', to: 'followings#follow', as: :follow
-  post 'unfollow', to: 'followings#unfollow', as: :unfollow
-  get 'followings', to: 'users#followings', as: :followings
-  get 'followers', to: 'users#followers', as: :followers
-  root 'home#index'
+  resources :users, only: [:show] do
+    get 'followings', to: 'users#followings'
+    get 'followers', to: 'users#followers'
+  end
+  resources :followings, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+  root 'home#index'
+  get 'me', to: 'users#me'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

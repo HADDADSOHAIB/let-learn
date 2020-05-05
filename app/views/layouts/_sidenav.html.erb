@@ -12,20 +12,19 @@
     <div class="row user-info">
       <div class="col-6 px-0 py-2 border-right d-flex flex-column align-items-center border-secondary">
         <small id="number-followings" data-toggle="modal" data-target="#myModal">
-          <%= link_to current_user.followeds.size, followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+          <%= link_to current_user.followeds.size, user_followings_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
         </small>
         <small>
-          <%= link_to "Followings", followings_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
+          <%= link_to "Followings", user_followings_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
         </small>
       </div>
       <div class="col-6 px-0 py-2 d-flex flex-column align-items-center">
         <small id="number-followings" data-toggle="modal" data-target="#myModal">
-          <%= link_to current_user.followers.size, followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+          <%= link_to current_user.followers.size, user_followers_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
         </small>
         <small>
-          <%= link_to "Followers", followers_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
+          <%= link_to "Followers", user_followers_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
         </small>
-        
       </div>
     </div>
     <hr class="my-0">

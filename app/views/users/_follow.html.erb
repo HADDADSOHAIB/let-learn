@@ -1,4 +1,4 @@
-<%= form_with(url: follow_path, method: 'post', id: "follow") do |f| %>
+<%= form_with(url: followings_path, method: 'post', id: "follow") do |f| %>
   <%= hidden_field(:follow, :followed_id, value: user.id) %>
   <%= hidden_field(:follow, :follower_id, value: current_user.id) %>
   <div class="actions">

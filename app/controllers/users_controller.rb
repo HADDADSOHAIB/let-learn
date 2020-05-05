@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-  
     if params[:id].to_i == current_user.id
       redirect_to me_url
     else

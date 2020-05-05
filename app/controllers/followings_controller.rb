@@ -1,7 +1,7 @@
 class FollowingsController < ApplicationController
   before_action :authenticate_user!
 
-  def follow
+  def create
     following = Following.new(following_params)
     @user = following.followed
     if following.save
@@ -11,7 +11,7 @@ class FollowingsController < ApplicationController
     end
   end
 
-  def unfollow
+  def destroy
     following = Following.find_by(following_params)
     @user = following.followed
     if following.destroy
