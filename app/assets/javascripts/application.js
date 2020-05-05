@@ -25,11 +25,11 @@ $(document).on('turbolinks:load', function(ev){
   links.forEach(link => {
     link.className = `opacity-half list-group-item list-group-item-action sidenav-link ${link.href.split('/')[3] === window.location.pathname.slice(1) ? "active" : ""}`;
   });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 });
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
 
 let actionsf={};
 let actionsu={};

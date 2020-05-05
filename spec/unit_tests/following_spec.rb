@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User' do
+RSpec.describe 'Following' do
   before(:each) do
     @user1 = User.new(username: 'User1',
                       fullname: 'User1',

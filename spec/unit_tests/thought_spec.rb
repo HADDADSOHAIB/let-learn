@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User' do
+RSpec.describe 'Thought' do
   before(:each) do
     @user = User.new(username: 'User1',
                       fullname: 'User1',
