@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   def index
     @thoughts = Thought.time_line(current_user)
     @thought = Thought.new
-    @to_follow = User.where.not(id: current_user).where.not(id: current_user.followeds)
+    @to_follow = User.to_follow(current_user)
   end
 end
