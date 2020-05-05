@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User sign in', type: :feature do
+RSpec.describe 'User sign out', type: :feature do
   before(:each) do
     @user = User.new(username: 'ExampleUser',
                       fullname: 'Example User',
@@ -9,7 +9,7 @@ RSpec.describe 'User sign in', type: :feature do
                       password_confirmation: 'password')
     @user.save
   end
-  scenario 'they access the home page to sign in' do
+  scenario 'they click the sign out link' do
     visit new_user_session_path
 
     fill_in 'user[email]', with: 'exampleuser@example.com'
@@ -17,6 +17,7 @@ RSpec.describe 'User sign in', type: :feature do
 
     click_button 'Sign In'
 
-    expect(page).to have_content('Example User')
+    find(".sidenav #signout").click
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end
