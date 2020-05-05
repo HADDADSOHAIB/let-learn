@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 
   private
   def set_thought
-    @thought = Thought.find(params[:id])
+    @thought = Thought.find(params[:thought_id])
   end
 
   def comment_params
