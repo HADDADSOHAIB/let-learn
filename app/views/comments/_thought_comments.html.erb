@@ -24,14 +24,23 @@
       </div>
     </div>
   </div>
-  <ul class="list-group list-group-flush">
+  <%= form_with(model: @comment, method: 'post') do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :thought_id, value: thought.id %>
+    <div class="input-group my-3">
+      <%= form.text_area(:text, rows: 2, class: "form-control", placeholder: "new comment ...") %>
+      <div class="input-group-append">
+        <%= form.submit 'Comment', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
+      </div>
+    </div>
+  <% end %>
+  <hr class="my-1">
+  <ul class="list-group list-group-flush" id="thought-comments">
     <% if thought.comments.size == 0 %>
-      <p class="m-3">There no comments for this thought</p>
+      <p class="m-3" id="no-comments">There no comments for this thought</p>
     <% else %>
       <% thought.comments.each do |comment| %>
-        <li class="list-group-item p-1">
-          <%= render  "comments/comment", comment: comment %>
-        </li>
+        <%= render  "comments/comment", comment: comment %>
       <% end %>
     <% end %>
   </ul>

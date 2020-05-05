@@ -1,0 +1,7 @@
+document.querySelector('#thought-comments').insertAdjacentHTML('afterbegin','<%= j render "comments/comment", comment: @comment %>');
+document.querySelector('#comment_text').value="";
+if(document.querySelector('#no-comments')){
+  document.querySelector('#no-comments').parentElement.removeChild(document.querySelector('#no-comments'));
+}
+
+$('#thought-<%= @thought.id %> .comment-icon').attr('data-original-title', "<%=  pluralize(@thought.comments.size, 'comment') %>.");
