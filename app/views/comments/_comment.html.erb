@@ -10,9 +10,12 @@
         <small class='mb-0'><%= link_to comment.user.fullname, user_path(comment.user), class: "black-color" %></small>
         <small class="opacity-half"><%=  time_ago_in_words(comment.updated_at) %></small>
       </div>
-      <small>
-        <%= comment.text %>
-      </small>
+      <div class="w-100 d-flex justify-content-between">
+        <small>
+          <%= comment.text %>
+        </small>
+        <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, root_path, {:remote => true, class: 'opacity-half', method: :delete, data: {confirm: 'Are you sure about deleting the thought?', toggle: "tooltip", placement: "bottom", title: "Delete"}} %>
+      </div>
     </div>
   </div>
 </li>
