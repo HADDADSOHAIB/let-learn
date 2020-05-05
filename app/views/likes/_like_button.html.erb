@@ -1,1 +1,1 @@
-<%= link_to "<i class='far fa-heart'></i>".html_safe, like_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'like-options', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.likes.size, "like")}."}}  %>
+<%= link_to "<i class='far fa-heart'></i>".html_safe, thought_likes_path(thought),  {:remote => true, method: :post, class: 'opacity-half', id: 'like-options', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.likes.size, "like")}."}}  %>

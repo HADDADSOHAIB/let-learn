@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :thoughts, only: [:create, :update, :edit, :destroy]
+  resources :thoughts, only: [:create, :update, :edit, :destroy] do 
+    resources :likes, only: [:create, :destroy]
+  end
   devise_for :users
   resources :users, only: [:show]
   get 'me', to: 'users#me'
@@ -9,8 +11,8 @@ Rails.application.routes.draw do
   get 'followings', to: 'users#followings', as: :followings
   get 'followers', to: 'users#followers', as: :followers
   root 'home#index'
-  post 'like/:id', to: 'likes#like', as: :like
-  post 'unlike/:id', to: 'likes#unlike', as: :unlike
+  # post 'like/:id', to: 'likes#like', as: :like
+  # post 'unlike/:id', to: 'likes#unlike', as: :unlike
   get 'thoughts/:id/comments', to: 'comments#show', as: :thought_comments
   resources :comments, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
