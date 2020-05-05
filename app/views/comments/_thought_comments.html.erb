@@ -27,12 +27,13 @@
   <%= form_with(model: @comment, method: 'post') do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :thought_id, value: thought.id %>
-    <div class="input-group my-3">
-      <%= form.text_area(:text, rows: 2, class: "form-control", maxlength: "50", placeholder: "new comment ...") %>
+    <div class="input-group mt-3 mb-1">
+      <%= form.text_area(:text, rows: 2, class: "form-control", maxlength: "100", placeholder: "new comment ...") %>
       <div class="input-group-append">
         <%= form.submit 'Comment', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
       </div>
     </div>
+    <small id="info-comment"></small>
   <% end %>
   <hr class="my-1">
   <ul class="list-group list-group-flush" id="thought-comments">

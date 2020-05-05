@@ -28,6 +28,12 @@ $(document).on('turbolinks:load', function(ev){
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();
   });
+
+  if($("#thought_text")){
+    $("#thought_text").keyup(function(){
+      $("#info-thought").text(`${(250 - $(this).val().length)}/250`);
+    });
+  }
 });
 
 

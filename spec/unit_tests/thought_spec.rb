@@ -29,7 +29,7 @@ RSpec.describe 'Thought' do
   end
 
   it 'should not be valid if :text is more then 150 characters' do
-    @thought.text = "a" * 151
+    @thought.text = "a" * 251
     @thought.save
     expect(@thought).to_not be_valid
   end

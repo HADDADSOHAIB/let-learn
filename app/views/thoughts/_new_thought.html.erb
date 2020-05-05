@@ -14,9 +14,10 @@
   <% end %>
   <%= form.hidden_field :author_id, value: current_user.id %>
   <div class="input-group">
-    <%= form.text_area(:text, rows: 2, class: "form-control", maxlength: "150") %>
+    <%= form.text_area(:text, rows: 2, class: "form-control", maxlength: "250") %>
     <div class="input-group-append">
       <%= form.submit 'Publish', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
     </div>
   </div>
 <% end %>
+<small id="info-thought"></small>

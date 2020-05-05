@@ -2,3 +2,6 @@ $("#modal-window").find(".modal-content").html("<%= j (render 'comments/thought_
 $("#modal-window").modal();
 
 $("#thought-<%= @thought.id %> .comment-icon").tooltip('hide');
+$("#comment_text").keyup(function(){
+  $("#info-comment").text(`${(100 - $(this).val().length)}/100`);
+});
