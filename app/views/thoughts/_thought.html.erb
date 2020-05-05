@@ -16,6 +16,7 @@
       <% else %>
         <%= render 'likes/like_button', thought: thought %>
       <% end %>
+      <%= link_to "<i class='far fa-comment'></i>".html_safe, thought_comments_path(thought), {:remote => true, class: 'opacity-half comment-icon', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.comments.size, "comment")}."}} %>
       <% if thought.author == current_user %>
         <span data-toggle="tooltip" data-placement="bottom" data-title="Edit">
           <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, class: 'opacity-half', data: {target: "#modal-window", toggle: "modal"}}  %>

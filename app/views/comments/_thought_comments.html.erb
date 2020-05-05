@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalScrollableTitle">Thought Details:</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" >
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex" id="thought-<%= thought.id %>">
+        <% if thought.author.photo.attached? %>
+          <%= link_to(image_tag(thought.author.photo, height: 80, width: 80), user_path(thought.author)) %>
+        <% else %>
+          <%= link_to(image_tag("default-image.jpg", height: 80, width: 80), user_path(thought.author)) %>
+        <% end %>
+        <div class="ml-2 w-100">
+          <div class="d-flex justify-content-between">
+            <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
+            <small class="opacity-half"><%=  time_ago_in_words(thought.updated_at) %></small>
+          </div>
+          <small class="mb-0"><%= thought.text %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% if thought.comments.size == 0 %>
+      <p class="m-3">There no comments for this thought</p>
+    <% else %>
+      <% thought.comments.each do |comment| %>
+        <li class="list-group-item p-1">
+          <%= render  "comments/comment", comment: comment %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

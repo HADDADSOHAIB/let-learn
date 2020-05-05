@@ -1,0 +1,16 @@
+<div class="media">
+  <% if comment.user.photo.attached? %>
+    <%= link_to(image_tag(comment.user.photo, height: 80, width: 80), user_path(comment.user)) %>
+  <% else %>
+    <%= link_to(image_tag("default-image.jpg", height: 80, width: 80), user_path(comment.user)) %>
+  <% end %>
+  <div class="media-body ml-1">
+    <div class="d-flex justify-content-between">
+      <p class='mb-0'><%= link_to comment.user.fullname, user_path(comment.user), class: "black-color" %></p>
+      <small class="opacity-half"><%=  time_ago_in_words(comment.updated_at) %></small>
+    </div>
+    <small>
+      <%= comment.text %>
+    </small>
+  </div>
+</div>

@@ -24,4 +24,5 @@ class User < ApplicationRecord
   has_many :followeds, through: :relation_followeds
 
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

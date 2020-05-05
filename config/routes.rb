@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'like/:id', to: 'likes#like', as: :like
   post 'unlike/:id', to: 'likes#unlike', as: :unlike
+  get 'thoughts/:id/comments', to: 'comments#show', as: :thought_comments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

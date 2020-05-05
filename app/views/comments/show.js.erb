@@ -1,0 +1,4 @@
+$("#modal-window").find(".modal-content").html("<%= j (render 'comments/thought_comments', thought: @thought) %>");
+$("#modal-window").modal();
+
+$("#thought-<%= @thought.id %> .comment-icon").tooltip('hide');
