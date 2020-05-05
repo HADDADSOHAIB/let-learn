@@ -2,7 +2,7 @@
   <% if thought.author.photo.attached? %>
     <%= link_to(image_tag(thought.author.photo, height: 80, width: 80), user_path(thought.author)) %>
   <% else %>
-    <%= link_to(image_tag("default-image.jpg", height: 80, width: 80), user_path(thought.author)) %>
+    <%= link_to(image_tag("default-photo.jpg", height: 80, width: 80), user_path(thought.author)) %>
   <% end %>
   <div class="ml-2 w-100">
     <div class="d-flex justify-content-between">
