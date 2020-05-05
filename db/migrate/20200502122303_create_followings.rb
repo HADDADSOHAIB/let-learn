@@ -5,8 +5,8 @@ class CreateFollowings < ActiveRecord::Migration[5.2]
       t.references :follower
 
       t.timestamps
-      add_foreign_key :followings, :users, column: :followed_id
-      add_foreign_key :followings, :users, column: :follower_id
     end
+    add_foreign_key :followings, :users, column: :followed_id
+    add_foreign_key :followings, :users, column: :follower_id
   end
 end
