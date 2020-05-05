@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   post 'like/:id', to: 'likes#like', as: :like
   post 'unlike/:id', to: 'likes#unlike', as: :unlike
   get 'thoughts/:id/comments', to: 'comments#show', as: :thought_comments
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
