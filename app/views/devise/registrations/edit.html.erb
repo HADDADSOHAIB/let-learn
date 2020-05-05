@@ -1,43 +1,104 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="row">
+  <div class="col-12 col-md-9 pr-0">
+    <div class="cover-image">
+      <% if current_user.cover_image.attached? %>
+        <%= image_tag current_user.cover_image %>
+      <% else %>
+        <%= image_tag "default-cover.jpg" %>
+      <% end %>
+    </div>
+    <%= render 'home/tab' %>
+    <%= render  "layouts/flash" %>
+  
+    <div class="card m-4" style="max-width: 100%;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Update Profile</h5>
+        
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="form-group field">
+            <%= f.label :fullname %><br />
+            <%= f.text_field :fullname, class: "form-control" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="form-group field">
+            <%= f.label :photo %><br />
+            <%= f.file_field :photo, class: "form-control" %>
+          </div>
+          <div class="form-group field">
+            <%= f.label :cover_image %><br />
+            <%= f.file_field :cover_image, class: "form-control" %>
+          </div>
+          <div class="form-group field">
+            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "**********" %>
+          </div>
+          <div class="form-group field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "**********" %>
+          </div>
+          <div class="field form-group">
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "**********" %>
+          </div>
+
+
+          <div class="actions">
+            <%= f.submit "Update", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>    
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="col-12 col-md-3 border-left full-screen-right p-0">
+    <div class="d-flex flex-column align-items-center">
+      <div class="d-flex m-2 align-items-center show-options">
+        <% if following?(current_user) %>
+          <%= render 'users/unfollow', user: current_user %>
+        <% elsif current_user != current_user %>
+          <%= render 'users/follow', user: current_user %>
+        <% else %>
+          <%= link_to "<i class='fas fa-user-edit'></i>".html_safe, edit_user_registration_path,  {class: "btn btn-outline-dark user-options mr-2 p-2 opacity-half", id: 'edit-options', data: { toggle: "tooltip", placement: "bottom", title: "Edit Profile."}}  %>
+        <% end %>
+        <% if current_user.photo.attached? %>
+          <%= image_tag current_user.photo, height: 80, width: 80, class: "user-options" %>
+        <% else %>
+          <%= image_tag "default-photo.jpg", height: 80, width: 80, class: "user-options" %>
+        <% end %>
+        <button class="opacity-half btn btn-outline-dark user-options ml-2 p-2"><i class="fas fa-list"></i></button>
+      </div>
+      <p class="mb-1"><%= current_user.fullname %></p>
+      <small class="opacity-half">@<%= current_user.username %></small>
+    </div>
+    <hr class="mt-1 mb-0">
+    <div class="row user-info">
+      <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
+        <small><%= current_user.thoughts.size %></small>
+        <small class="opacity-half">Thoughts</small>
+      </div>
+      <div class="col-4 px-0 py-2 border-left border-right d-flex flex-column align-items-center">
+        <small><%= current_user.followeds.size %></small>
+        <small class="opacity-half">Followings</small>
+      </div>
+      <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
+        <small id="number-followers"><%= current_user.followers.size %></small>
+        <small class="opacity-half">Followers</small>
+      </div>
+    </div>
+    <hr class="mt-0 mb-1">
+    <div>
+      <p class="m-3">Followed by:</p>
+    </div>
+    <hr>
+    <div class="user-followers">
+      <% current_user.followers.each do |user| %>
+        <%= render 'users/user', user: user, show: false %>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
