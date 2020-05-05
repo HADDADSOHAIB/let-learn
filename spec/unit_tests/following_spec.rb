@@ -22,6 +22,18 @@ RSpec.describe 'Following' do
     assert @following.valid?
   end
 
+  it 'record not valid if followed nil' do
+    @following.followed = nil
+    @following.save
+    expect(@following).to_not be_valid
+  end
+
+  it 'record not valid if follower nil' do
+    @following.follower = nil
+    @following.save
+    expect(@following).to_not be_valid
+  end
+
   it 'duplicated record are not allowed' do
     duplicated_following = Following.new(followed: @user1, follower: @user2)
     duplicated_following.save

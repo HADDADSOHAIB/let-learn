@@ -19,6 +19,18 @@ RSpec.describe 'Following' do
     assert @like.valid?
   end
 
+  it 'like is invalid if thought is nil' do
+    @like.thought = nil
+    @like.save
+    expect(@like).to_not be_valid
+  end
+
+  it 'like is invalid if user is nil' do
+    @like.user = nil
+    @like.save
+    expect(@like).to_not be_valid
+  end
+
   it 'duplicated record are not allowed' do
     duplicated_like = Like.new(thought: @thought, user: @user)
     duplicated_like.save
