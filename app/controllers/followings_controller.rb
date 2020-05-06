@@ -4,7 +4,9 @@ class FollowingsController < ApplicationController
   def create
     following = Following.new(following_params)
     @user = following.followed
-    if following.save
+
+
+    if following.save && Room.create_room(@user, current_user)
       respond_to do |format|
         format.js {render :follow}
       end

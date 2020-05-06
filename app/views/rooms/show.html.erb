@@ -1,4 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<div class="row">
+  <div class="col-12 col-md-8 pr-0">
+    <%= render  "layouts/flash" %>
+    
+    <div class="card m-4">
+      <div class="card-body messages">
+        <p>Please select a conversation on the right.</p>
+      </div>
+      <div class="card-footer room p-1">
+        <%= form_with(url: root_path, method: 'get') do |f| %>
+          <%= hidden_field(:message, :room_id, value: 0) %>
+          <div class="input-group mb-3">
+            <%= text_field :message, :body, class:"form-control", placeholder:"new messages ...", id: "new-message" %>
+            <div class="input-group-append">
+              <%= f.submit "Submit", class: "btn btn-outline-dark", id: "button-addon" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 border-left full-screen-right">
+    <div>
+      <p class="m-3">Conversations:</p>
+    </div>
+    <hr>
+    <div class="home">
+    
+    </div>
+  </div>
+  
+</div>

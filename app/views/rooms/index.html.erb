@@ -1,25 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Rooms</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Room', new_room_path %>
+<div class="row">
+  <div class="col-12 col-md-8 pr-0">
+    <%= render  "layouts/flash" %>
+    
+    <div class="card m-4">
+      <div class="card-body messages d-flex justify-content-center align-items-center">
+        <p>Please select a conversation on the right.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 border-left full-screen-right">
+    <div>
+      <p class="m-3">Conversations:</p>
+    </div>
+    <hr>
+    <div class="home">
+    
+    </div>
+  </div>
+  
+</div>

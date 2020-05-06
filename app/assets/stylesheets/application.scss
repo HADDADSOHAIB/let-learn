@@ -102,3 +102,19 @@ img.user-options {
 .opacity-half {
   opacity: 0.7;
 }
+
+
+
+.messages{
+  height: 400px;
+  overflow-y: auto;
+}
+
+// .conversations{
+//   height: 450px;
+//   overflow-y: auto;
+// }
+
+.card-footer.room{
+  height: 50px;
+}
