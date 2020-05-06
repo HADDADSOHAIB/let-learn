@@ -11,24 +11,32 @@ $(document).on('turbolinks:load', function(ev){
       },
     
       received(data) {
-        console.log(data);
-        if(data.message.room_id == document.querySelector('.messages').dataset.roomId){
+        // console.log(data);
+        let messages = document.querySelector('.messages');
+        let roomId = document.querySelector('.messages').dataset.roomId;
+        if(!roomId) roomId=0;
+        if(data.message.room_id == messages.dataset.roomId){
           document.querySelector('#new-message').value="";
-          document.querySelector('.messages').insertAdjacentHTML('beforeend', data.body);
+          messages.insertAdjacentHTML('beforeend', data.body);
           scroll_bottom();
         }
 
         let allRooms = document.querySelector("#all-rooms");
         let room = document.querySelector(`#room-${data.message.room_id}`);
-        allRooms.removeChild(room);
-        allRooms.insertAdjacentElement('afterbegin',room);
-
-        if(room.querySelector('.badge')){
+        if(allRooms){
+          allRooms.removeChild(room);
+          allRooms.insertAdjacentElement('afterbegin',room);
+        }
+        
+        if(messages && document.querySelector(`#room-${data.message.room_id}`) 
+          && roomId != data.message.room_id && room.querySelector('.badge')){
           room.querySelector('.badge').textContent = parseInt(room.querySelector('.badge').textContent ) + 1
         }
-        else{
+        else if(messages && document.querySelector(`#room-${data.message.room_id}`) 
+          && roomId != data.message.room_id){
           room.insertAdjacentHTML('beforeend',"<span class='badge badge-primary'>1</span>")
         }
+        update_unread();
       }
     });
   }

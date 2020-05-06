@@ -25,6 +25,26 @@ scroll_bottom = function(){
   $('.messages').scrollTop($('.messages')[0].scrollHeight);
 };
 
+update_unread = function(){
+  let messages = document.querySelector('.messages');
+  let roomId = 0;
+  if(document.querySelector('.messages')){
+    roomId = document.querySelector('.messages').dataset.roomId;
+  }
+  if( messages && roomId && document.querySelector(`#room-${roomId}`)){
+    jQuery.ajax({
+      url: "/reset_unread",
+      type: "GET",
+      data: {room_id: roomId},
+      dataType: "json",
+      success: function(data){
+        if(document.querySelector(`#room-${roomId} .badge`))
+        document.querySelector(`#room-${roomId}`).removeChild(document.querySelector(`#room-${roomId} .badge`));
+      }
+    });
+  }
+}
+
 $(document).on('turbolinks:load', function(ev){
   let links=document.querySelectorAll('.sidenav-link');
   links.forEach(link => {
@@ -41,9 +61,7 @@ $(document).on('turbolinks:load', function(ev){
   }
 
   scroll_bottom();
-
-
-  
+  update_unread();
 });
 
 

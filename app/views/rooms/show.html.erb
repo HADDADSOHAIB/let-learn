@@ -31,10 +31,13 @@
         <% @rooms.each do |room| %>
           <li class="list-group-item" id="room-<%= room.id %>">
             <%= link_to  room_colleague_name(room), room_path(room), class: "black-color under-line" %>
+            <% if room_unread_messages(room) > 0 %>
+              <span class='badge badge-primary'><%= room_unread_messages(room) %></span>
+            <% end %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
-  
+
 </div>

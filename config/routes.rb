@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   root 'home#index'
   get 'me', to: 'users#me'
+  get 'reset_unread', to: 'join_user_rooms#reset_unread'
 
   mount ActionCable.server, at: 'cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
