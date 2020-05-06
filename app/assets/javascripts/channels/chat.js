@@ -17,7 +17,11 @@ $(document).on('turbolinks:load', function(ev){
         scroll_bottom();
       }
 
-      
+      let allRooms = document.querySelector("#all-rooms");
+      let room = document.querySelector(`#room-${data.message.room_id}`);
+      allRooms.removeChild(room);
+      allRooms.insertAdjacentElement('afterbegin',room);
+      room.querySelector('.badge').textContent = parseInt(room.querySelector('.badge').textContent ) + 1
     }
   });
 });
