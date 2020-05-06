@@ -4,7 +4,7 @@ class Room < ApplicationRecord
 
   has_many :messages, dependent: :destroy
 
-
+  # scope :room_colleague, ->current_user { User.where(:id => Room.users).where.not(id: current_user.id)}
   def self.create_room(first_user, second_user)
     rooms = Room.joins(join_user_rooms: :user).where(users: {id: first_user.id}) & Room.joins(join_user_rooms: :user).where(users: {id: second_user.id})
     if rooms.size == 0
