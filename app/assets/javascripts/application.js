@@ -20,6 +20,11 @@
 //= require turbolinks
 //= require_tree .
 
+scroll_bottom = function(){
+  if($('.messages').length > 0)
+  $('.messages').scrollTop($('.messages')[0].scrollHeight);
+};
+
 $(document).on('turbolinks:load', function(ev){
   let links=document.querySelectorAll('.sidenav-link');
   links.forEach(link => {
@@ -34,7 +39,10 @@ $(document).on('turbolinks:load', function(ev){
       $("#info-thought").text(`${(250 - $(this).val().length)}/250`);
     });
   }
+
+  scroll_bottom();
 });
+
 
 
 let actionsf={};

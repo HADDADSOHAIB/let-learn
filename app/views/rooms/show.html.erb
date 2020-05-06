@@ -3,14 +3,14 @@
     <%= render  "layouts/flash" %>
     
     <div class="card m-4">
-      <div class="card-body messages">
+      <div class="card-body messages" data-room-id="<%= @room.id %>">
         <% @room.messages.each do |message| %>
-          <%= render message %>
+          <%= render 'messages/message', message: message %>
         <% end %>
       </div>
       <div class="card-footer room p-1">
-        <%= form_with(url: root_path, method: 'get') do |f| %>
-          <%= hidden_field(:message, :room_id, value: 0) %>
+        <%= form_with(url: messages_path, method: 'post') do |f| %>
+          <%= hidden_field(:message, :room_id, value: @room.id) %>
           <div class="input-group mb-3">
             <%= text_field :message, :body, class:"form-control", placeholder:"new messages ...", id: "new-message" %>
             <div class="input-group-append">
@@ -29,7 +29,7 @@
     <div class="home">
       <ul class="list-group list-group-flush">
         <% @rooms.each do |room| %>
-          <li class="list-group-item">
+          <li class="list-group-item" id="room-<%= room.id %>">
             <%= link_to  room_colleague_name(room), room_path(room), class: "black-color under-line" %>
           </li>
         <% end %>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   resources :rooms, only: [:show, :index]
+  resources :messages, only: [:create]
   resources :thoughts, only: [:create, :update, :edit, :destroy] do 
     resources :likes, only: [:create, :destroy]
     resource :comments, only: [:show]
@@ -14,5 +15,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   root 'home#index'
   get 'me', to: 'users#me'
+
+  mount ActionCable.server, at: 'cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
