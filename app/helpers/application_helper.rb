@@ -22,9 +22,9 @@ module ApplicationHelper
     last_user = room.join_user_rooms[1]
     
     if first_user.user_id == current_user.id
-      return first_user.unread_messages
+      return (first_user.unread_messages ? first_user.unread_messages : 0)
     else
-      return last_user.unread_messages
+      return (last_user.unread_messages ? last_user.unread_messages : 0)
     end
   end
 end
