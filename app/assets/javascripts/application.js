@@ -41,6 +41,9 @@ $(document).on('turbolinks:load', function(ev){
   }
 
   scroll_bottom();
+
+
+  
 });
 
 

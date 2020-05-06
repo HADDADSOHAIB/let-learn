@@ -10,7 +10,7 @@ module ApplicationCable
       if current_user = env['warden'].user
         current_user
       else
-        reject_authorized_connection
+        reject_unauthorized_connection
       end
     end
 

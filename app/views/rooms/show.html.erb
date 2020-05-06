@@ -31,7 +31,6 @@
         <% @rooms.each do |room| %>
           <li class="list-group-item" id="room-<%= room.id %>">
             <%= link_to  room_colleague_name(room), room_path(room), class: "black-color under-line" %>
-            <span class="badge badge-primary">0</span>
           </li>
         <% end %>
       </ul>

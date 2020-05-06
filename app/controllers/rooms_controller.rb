@@ -2,12 +2,12 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
   def index
-    @rooms = current_user.rooms.includes(:users)
+    @rooms = current_user.rooms.includes(:users).order(last_message: :desc)
   end
 
 
   def show
-    @rooms = current_user.rooms.includes(:users)
+    @rooms = current_user.rooms.includes(:users).order(last_message: :desc)
   end
 
   private
