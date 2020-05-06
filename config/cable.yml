@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://let-learn.herokuapp.com:6379/1" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://redis-19740.c233.eu-west-1-1.ec2.cloud.redislabs.com:19740" } %>
   channel_prefix: let-learn_production
