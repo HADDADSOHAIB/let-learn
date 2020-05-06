@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :rooms
   resources :thoughts, only: [:create, :update, :edit, :destroy] do 
     resources :likes, only: [:create, :destroy]
     resource :comments, only: [:show]

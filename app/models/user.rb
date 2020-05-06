@@ -26,5 +26,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :join_user_rooms
+  has_many :rooms, through: :join_user_rooms
+
+  has_many :messages
+
   scope :to_follow, ->current_user { where.not(id: current_user).where.not(id: current_user.followeds) }
 end
