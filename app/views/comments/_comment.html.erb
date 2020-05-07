@@ -15,7 +15,7 @@
           <%= comment.text %>
         </small>
         <% if comment.user == current_user %>
-          <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, comment_path(comment), {:remote => true, class: 'opacity-half', method: :delete, data: {confirm: 'Are you sure about deleting the comment?', toggle: "tooltip", placement: "bottom", title: "Delete"}} %>
+          <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, comment_path(comment), {:remote => true, id: "delete-comment", class: 'opacity-half', method: :delete, data: {confirm: 'Are you sure about deleting the comment?', toggle: "tooltip", placement: "bottom", title: "Delete"}} %>
         <% end %>
       </div>
     </div>
