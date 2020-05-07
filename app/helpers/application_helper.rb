@@ -27,4 +27,15 @@ module ApplicationHelper
       return (last_user.unread_messages ? last_user.unread_messages : 0)
     end
   end
+
+  def user_unread_messages(user)
+    joins = user.join_user_rooms
+
+    count = 0
+    joins.each do |join|
+      count += join.unread_messages if join.unread_messages
+    end
+
+    count
+  end
 end

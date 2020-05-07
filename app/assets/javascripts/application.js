@@ -38,8 +38,12 @@ update_unread = function(){
       data: {room_id: roomId},
       dataType: "json",
       success: function(data){
-        if(document.querySelector(`#room-${roomId} .badge`))
-        document.querySelector(`#room-${roomId}`).removeChild(document.querySelector(`#room-${roomId} .badge`));
+        if(document.querySelector(`#room-${roomId} .badge`)){
+          let count = parseInt(document.querySelector(`#room-${roomId} .badge`).innerText); 
+          document.querySelector(`#room-${roomId}`).removeChild(document.querySelector(`#room-${roomId} .badge`));
+          let all_messages = document.querySelector('#all-messages');
+          all_messages.querySelector('.badge').textContent = parseInt(all_messages.querySelector('.badge').textContent ) - count;
+        }
       }
     });
   }

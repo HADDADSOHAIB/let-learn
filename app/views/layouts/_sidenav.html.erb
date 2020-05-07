@@ -6,7 +6,7 @@
       <% else %>
         <%= link_to(image_tag("default-photo.jpg", class: "profile-picture"), me_path) %>
       <% end %>
-      <p class="mb-0 ml-3 opacity-half" ><%= link_to current_user.fullname, me_path, class: "white-color opacity-half" %></p>
+      <p class="mb-0 ml-3 opacity-half" id="current_user" data-id="<%= current_user.id %>"><%= link_to current_user.fullname, me_path, class: "white-color opacity-half" %></p>
     </div>
     <hr class="m-0">
     <div class="row user-info">
@@ -32,7 +32,8 @@
     <div class="list-group">
       <%= link_to  "<i class='fas fa-home mr-2'></i>HOME".html_safe, root_path, class: "opacity-half list-group-item list-group-item-action sidenav-link" %>
       <%= link_to  "<i class='fas fa-user-alt mr-2'></i>PROFILE".html_safe, me_path, class: "opacity-half list-group-item list-group-item-action sidenav-link" %>
-      <%= link_to  "<i class='far fa-envelope mr-2'></i>MESSAGES".html_safe, rooms_path, class: "opacity-half list-group-item list-group-item-action sidenav-link" %>
+      
+      <%= link_to  "<i class='far fa-envelope mr-2'></i>MESSAGES".html_safe+(user_unread_messages(current_user) == 0 ? "" : "<span class='badge badge-warning ml-2'>#{user_unread_messages(current_user)}</span>").html_safe, rooms_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "all-messages" %>
       <%= link_to  "<i class='fas fa-sign-out-alt mr-2'></i>LOGOUT".html_safe, destroy_user_session_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "signout", method: :delete %>
     </div>
   </div>
