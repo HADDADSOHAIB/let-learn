@@ -1,6 +1,6 @@
 <div class="d-flex my-4 mx-2" id="thought-<%= thought.id %>">
   <% if thought.author.photo.attached? %>
-    <%= link_to(image_tag(thought.author.photo, height: 80, width: 80), user_path(thought.author)) %>
+    <%= link_to(image_tag(thought.author.photo, height: 80, width: 80, alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), user_path(thought.author)) %>
   <% else %>
     <%= link_to(image_tag("default-photo.jpg", height: 80, width: 80), user_path(thought.author)) %>
   <% end %>

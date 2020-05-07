@@ -2,7 +2,8 @@
   <div class="col-12 col-md-9 pr-0">
     <div class="cover-image">
       <% if @user.cover_image.attached? %>
-        <%= image_tag @user.cover_image %>
+        <%= image_tag @user.cover_image, alt:"Image not found",
+         onerror: "this.onerror=null;this.src='/images/default-cover.jpg';" %>
       <% else %>
         <%= image_tag "default-cover.jpg" %>
       <% end %>
@@ -41,7 +42,7 @@
           <%= link_to "<i class='fas fa-user-edit'></i>".html_safe, edit_user_registration_path,  {class: "btn btn-outline-dark user-options mr-2 p-2 opacity-half", id: 'edit-options', data: { toggle: "tooltip", placement: "bottom", title: "Edit Profile."}}  %>
         <% end %>
         <% if @user.photo.attached? %>
-          <%= image_tag @user.photo, height: 80, width: 80, class: "user-options" %>
+          <%= image_tag @user.photo, height: 80, width: 80, class: "user-options", alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';" %>
         <% else %>
           <%= image_tag "default-photo.jpg", height: 80, width: 80, class: "user-options" %>
         <% end %>

@@ -2,7 +2,7 @@
   <div class="sticky-top position-sticky">
     <div class="d-flex justify-content-center align-items-center p-3">
       <% if current_user.photo.attached?  %>
-      <%= link_to(image_tag(current_user.photo, class: "profile-picture"), me_path) %>
+      <%= link_to(image_tag(current_user.photo, class: "profile-picture", alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), me_path) %>
       <% else %>
         <%= link_to(image_tag("default-photo.jpg", class: "profile-picture"), me_path) %>
       <% end %>
