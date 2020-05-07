@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function(ev){
         // Called when the subscription has been terminated by the server
       },
       received(data) {
-        // console.log(data);
+        console.log(data);
         let messages = document.querySelector('.messages');
         let roomId = 0;
         if(messages){
@@ -17,7 +17,6 @@ $(document).on('turbolinks:load', function(ev){
         }
         if(!roomId) roomId=0;
         if(messages && data.message.room_id == messages.dataset.roomId){
-          document.querySelector('#new-message').value="";
           messages.insertAdjacentHTML('beforeend', data.body);
           scroll_bottom();
         }
@@ -46,6 +45,10 @@ $(document).on('turbolinks:load', function(ev){
         }
         else if(current_user_id && data.message.user_id != current_user_id && roomId != data.message.room_id){
           all_messages.querySelector('.badge').textContent = parseInt(all_messages.querySelector('.badge').textContent ) + 1;
+        }
+
+        if(messages && data.message.room_id == messages.dataset.roomId && current_user_id == data.message.user_id){
+          document.querySelector('#new-message').value="";
         }
 
         update_unread();

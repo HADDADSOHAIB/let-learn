@@ -15,7 +15,7 @@
         <%= form_with(url: messages_path, method: 'post') do |f| %>
           <%= hidden_field(:message, :room_id, value: @room.id) %>
           <div class="input-group mb-3">
-            <%= text_field :message, :body, class:"form-control", placeholder:"new messages ...", id: "new-message" %>
+            <%= text_field :message, :body, class:"form-control", placeholder:"new messages ...", id: "new-message", required: true %>
             <div class="input-group-append">
               <%= f.submit "Submit", class: "btn btn-outline-dark", id: "button-addon" %>
             </div>
@@ -42,5 +42,4 @@
       </ul>
     </div>
   </div>
-
 </div>

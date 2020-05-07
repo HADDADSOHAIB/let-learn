@@ -21,5 +21,6 @@ class MessagesController < ApplicationController
     if new_message.save
       ActionCable.server.broadcast "chat:#{new_message.room_id}", {message: new_message, body: render(partial: 'message', locals: {message: new_message})}
     end
+
   end
 end

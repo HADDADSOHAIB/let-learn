@@ -15,4 +15,3 @@ class Room < ApplicationRecord
     end
   end
 end
-
