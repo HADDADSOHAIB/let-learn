@@ -1,4 +1,5 @@
 class JoinUserRoomsController < ApplicationController
+  before_action :authenticate_user!
   def reset_unread
     room = Room.find(params[:room_id])
     first_user = room.join_user_rooms[0]

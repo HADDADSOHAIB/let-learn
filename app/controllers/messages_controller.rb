@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     message_params = params.require(:message).permit(:room_id, :body)
     new_message = Message.new(user: current_user, room_id: message_params[:room_id], body: message_params[:body])

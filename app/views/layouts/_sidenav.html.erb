@@ -1,7 +1,7 @@
 <div class="full-screen bg-dark text-white  sticky-top position-sticky">
   <div class="sticky-top position-sticky">
     <div class="d-flex justify-content-center align-items-center p-3">
-      <% if current_user.photo.attached? && current_user.photo.blank?  %>
+      <% if current_user.photo.attached?  %>
       <%= link_to(image_tag(current_user.photo, class: "profile-picture"), me_path) %>
       <% else %>
         <%= link_to(image_tag("default-photo.jpg", class: "profile-picture"), me_path) %>
