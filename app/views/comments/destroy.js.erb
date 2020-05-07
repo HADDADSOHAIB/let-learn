@@ -3,3 +3,6 @@ if(document.querySelector('#comment-<%= @comment.id %>')){
 }
 
 $('#thought-<%= @thought.id %> .comment-icon').attr('data-original-title', "<%=  pluralize(@thought.comments.size, 'comment') %>.");
+if(document.querySelector('#thought-<%= @thought.id %> #comment-number')){
+  document.querySelector('#thought-<%= @thought.id %> #comment-number').innerText = parseInt(document.querySelector('#thought-<%= @thought.id %> #comment-number').innerText) - 1
+}

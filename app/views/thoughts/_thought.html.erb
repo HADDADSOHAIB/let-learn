@@ -10,13 +10,19 @@
       <small class="opacity-half"><%=  time_ago_in_words(thought.updated_at) %></small>
     </div>
     <small class="mb-0"><%= thought.text %></small>
-    <div class="thought-options d-flex justify-content-around  mt-1">
-      <% if like?(thought, current_user) %>
-        <%= render 'likes/unlike_button', thought: thought %>
-      <% else %>
-        <%= render 'likes/like_button', thought: thought %>
-      <% end %>
-      <%= link_to "<i class='far fa-comment'></i>".html_safe, thought_comments_path(thought), {:remote => true, class: 'opacity-half comment-icon', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.comments.size, "comment")}."}} %>
+    <div class="thought-options d-flex justify-content-around align-items-start  mt-1">
+      <div class="d-flex flex-column align-items-center like-options">
+        <% if like?(thought, current_user) %>
+          <%= render 'likes/unlike_button', thought: thought %>
+        <% else %>
+          <%= render 'likes/like_button', thought: thought %>
+        <% end %>
+        <small id="like-number"><%= thought.likes.size %></small>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <%= link_to "<i class='far fa-comment'></i>".html_safe, thought_comments_path(thought), {:remote => true, class: 'opacity-half comment-icon', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.comments.size, "comment")}."}} %>
+        <small id="comment-number"><%= thought.comments.size %></small>
+      </div>
       <% if thought.author == current_user %>
         <span data-toggle="tooltip" data-placement="bottom" data-title="Edit">
           <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, class: 'opacity-half', data: {target: "#modal-window", toggle: "modal"}}  %>
@@ -26,4 +32,3 @@
     </div>
   </div>
 </div>
-
