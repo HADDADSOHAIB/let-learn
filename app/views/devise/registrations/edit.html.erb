@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-12 col-md-9 pr-0">
     <div class="cover-image">
-      <% if current_user.cover_image.attached? %>
+      <% if current_user.cover_image.attached? && current_user.cover_image.blank? %>
         <%= image_tag current_user.cover_image %>
       <% else %>
         <%= image_tag "default-cover.jpg" %>
@@ -64,7 +64,7 @@
         <% else %>
           <%= link_to "<i class='fas fa-user-edit'></i>".html_safe, edit_user_registration_path,  {class: "btn btn-outline-dark user-options mr-2 p-2 opacity-half", id: 'edit-options', data: { toggle: "tooltip", placement: "bottom", title: "Edit Profile."}}  %>
         <% end %>
-        <% if current_user.photo.attached? %>
+        <% if current_user.photo.attached? && current_user.photo.blank? %>
           <%= image_tag current_user.photo, height: 80, width: 80, class: "user-options" %>
         <% else %>
           <%= image_tag "default-photo.jpg", height: 80, width: 80, class: "user-options" %>

@@ -1,9 +1,9 @@
 <li class="list-group-item p-1" id="comment-<%= comment.id %>">
   <div class="media">
-    <% if comment.user.photo.attached? %>
+    <% if comment.user.photo.attached? && comment.user.photo.blank? %>
       <%= link_to(image_tag(comment.user.photo, height: 50, width: 50), user_path(comment.user)) %>
     <% else %>
-      <%= link_to(image_tag("default-image.jpg", height: 50, width: 50), user_path(comment.user)) %>
+      <%= link_to(image_tag("default-photo.jpg", height: 50, width: 50), user_path(comment.user)) %>
     <% end %>
     <div class="media-body ml-1">
       <div class="d-flex justify-content-between">
