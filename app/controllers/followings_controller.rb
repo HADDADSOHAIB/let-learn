@@ -5,8 +5,9 @@ class FollowingsController < ApplicationController
     following = Following.new(following_params)
     @user = following.followed
 
+    @room_id = Room.create_room(@user, current_user)
 
-    if following.save && Room.create_room(@user, current_user)
+    if following.save && @room_id
       respond_to do |format|
         format.js {render :follow}
       end
@@ -27,3 +28,4 @@ class FollowingsController < ApplicationController
     params.require(:follow).permit(:followed_id, :follower_id)
   end
 end
+

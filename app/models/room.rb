@@ -9,8 +9,10 @@ class Room < ApplicationRecord
     if rooms.size == 0
       room = Room.new
       room.save && JoinUserRoom.create(room: room, user: first_user) && JoinUserRoom.create(room: room, user: second_user)
+      return room.id
     else
-      true
+      return 0
     end
   end
 end
+
