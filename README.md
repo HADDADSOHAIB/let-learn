@@ -2,7 +2,7 @@
 
 This project is a social media plateform where people can share their learning experience, if you are learning a new skill, you can join and find, follow and inspire people by learning together.
 
-[![IMAGE](https://img.youtube.com/vi/v=7gN_Q1u_L9g/maxresdefault.jpg)](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
+[![IMAGE](https://i9.ytimg.com/vi/7gN_Q1u_L9g/mq2.jpg?sqp=CPTt0vUF&rs=AOn4CLBgI8t1AcTLFFIYPl_lAsucwqS6Lw)](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
 
 ## Live demo
 
