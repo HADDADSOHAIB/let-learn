@@ -2,9 +2,9 @@
 
 This project is a social media plateform where people can share their learning experience, if you are learning a new skill, you can join and find, follow and inspire people by learning together.
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/v=7gN_Q1u_L9g/0.jpg)](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
+[![IMAGE](https://img.youtube.com/vi/v=7gN_Q1u_L9g/maxresdefault.jpg)](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
 
-## Live App link
+## Live demo
 
 [heroku live site](https://let-learn.herokuapp.com/)
 
@@ -46,7 +46,6 @@ finally you have to open it in the [browser](http://localhost:3000/)
 
 to run the test cases run the following commands
 
-Model test cases:
 
 ```$ rspec```
 
