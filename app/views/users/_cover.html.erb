@@ -9,6 +9,25 @@
   <% else %>
     <%= image_tag("default-cover.jpg", class: "w-100") %>
   <% end %>
+  <% if user == current_user %>
+    <h6 class="card-title text-center mt-3">Update Cover</h6>  
+    <%= form_for(user, url: registration_path(user), html: { method: :put }) do |f| %>
+      <div class="form-group field">
+        <%= f.label :cover_image %><br />
+        <%= f.file_field :cover_image, class: "form-control" %>
+      </div>
+    
+      <div class="field form-group">
+        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "**********" %>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
