@@ -3,16 +3,16 @@ require 'rails_helper'
 RSpec.describe 'User can see the profil of other users', type: :feature do
   before(:each) do
     @user = User.new(username: 'ExampleUser',
-                      fullname: 'Example User',
-                      email: 'exampleuser@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'Example User',
+                     email: 'exampleuser@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
     @user_to_follow = User.new(username: 'UserToFollow',
-                      fullname: 'User To Follow',
-                      email: 'UserToFollow@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                               fullname: 'User To Follow',
+                               email: 'UserToFollow@example.com',
+                               password: 'password',
+                               password_confirmation: 'password')
     @user_to_follow.save
   end
   scenario 'acces profile' do

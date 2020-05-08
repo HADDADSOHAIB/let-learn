@@ -1,6 +1,6 @@
 class ThoughtsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_thought, only: [:edit, :update, :destroy]
+  before_action :set_thought, only: %i[edit update destroy]
 
   def create
     @thought = Thought.new(thought_params)
@@ -10,7 +10,7 @@ class ThoughtsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Thought was successfully created.' }
         format.json { render :show, status: :created, location: @thought }
       else
-        format.html { redirect_to root_path, alert: @thought.errors.full_messages.join(". ") }
+        format.html { redirect_to root_path, alert: @thought.errors.full_messages.join('. ') }
         format.json { render json: @thought.errors, status: :unprocessable_entity }
       end
     end
@@ -23,7 +23,6 @@ class ThoughtsController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @thought.update(thought_params)
         format.html { redirect_to root_path, notice: 'Thought was successfully updated.' }
@@ -41,11 +40,12 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to thoughts_url, notice: 'Thought was successfully destroyed.' }
       format.json { head :no_content }
-      format.js { render :destroy}
+      format.js { render :destroy }
     end
   end
 
   private
+
   def set_thought
     @thought = Thought.find(params[:id])
   end

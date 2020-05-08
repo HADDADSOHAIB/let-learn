@@ -4,28 +4,21 @@ class FollowingsController < ApplicationController
   def create
     following = Following.new(following_params)
     @user = following.followed
-
     @room_id = Room.create_room(@user, current_user)
 
-    if following.save && @room_id
-      respond_to do |format|
-        format.js {render :follow}
-      end
-    end
+    respond_to { |format| format.js { render :follow } } if following.save && @room_id
   end
 
   def destroy
     following = Following.find_by(following_params)
     @user = following.followed
-    if following.destroy
-      respond_to do |format|
-        format.js {render :unfollow}
-      end
-    end
+
+    respond_to { |format| format.js { render :unfollow } } if following.destroy
   end
-  private 
+
+  private
+
   def following_params
     params.require(:follow).permit(:followed_id, :follower_id)
   end
 end
-

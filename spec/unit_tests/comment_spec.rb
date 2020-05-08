@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe 'Comment' do
   before(:each) do
     @user = User.new(username: 'User',
-                      fullname: 'User',
-                      email: 'user@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'User',
+                     email: 'user@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
-    @thought = Thought.new(author: @user, text: "this a test thought")
+    @thought = Thought.new(author: @user, text: 'this a test thought')
     @thought.save
 
-    @comment = Comment.new(thought: @thought, user: @user, text: "test comment")
+    @comment = Comment.new(thought: @thought, user: @user, text: 'test comment')
     @comment.save
   end
 
@@ -38,7 +38,7 @@ RSpec.describe 'Comment' do
   end
 
   it 'comment is invalid if text is linger then 250' do
-    @comment.text = "a" * 251
+    @comment.text = 'a' * 251
     @comment.save
     expect(@comment).to_not be_valid
   end

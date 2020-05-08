@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'User' do
   before(:each) do
     @user = User.new(username: 'ExampleUser',
-                      fullname: 'Example User',
-                      email: 'user@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'Example User',
+                     email: 'user@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
   end
 
@@ -34,7 +34,7 @@ RSpec.describe 'User' do
 
   it 'should be not valid when :username is duplicated' do
     duplicate_user = @user.dup
-    duplicate_user.username = "exampleuser"
+    duplicate_user.username = 'exampleuser'
     expect(duplicate_user).to_not be_valid
   end
 
@@ -46,7 +46,7 @@ RSpec.describe 'User' do
 
   it 'should be not valid when :email is duplicated' do
     duplicate_user = @user.dup
-    duplicate_user.email = "USer@example.com"
+    duplicate_user.email = 'USer@example.com'
     expect(duplicate_user).to_not be_valid
   end
 

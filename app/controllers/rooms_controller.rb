@@ -7,22 +7,18 @@ class RoomsController < ApplicationController
     @rooms = current_user.rooms.includes(:users).order(last_message: :desc)
   end
 
-
   def show
     @rooms = current_user.rooms.includes(:users).order(last_message: :desc)
-    if !@room
-      redirect_to rooms_path, alert: "Room does not exist or you are not a member"
-    end
+    redirect_to rooms_path, alert: 'Room does not exist or you are not a member' unless @room
   end
 
   private
+
   def set_room
     @room = Room.includes(:messages).find_by_id(params[:id])
   end
 
   def secure_room
-    if @room && !@room.users.include?(current_user)
-      @room = nil
-    end
+    @room = nil if @room && !@room.users.include?(current_user)
   end
 end

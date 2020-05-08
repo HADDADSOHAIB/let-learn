@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Thought' do
   before(:each) do
     @user = User.new(username: 'User1',
-                      fullname: 'User1',
-                      email: 'user1@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'User1',
+                     email: 'user1@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
-    @thought = Thought.new(author: @user, text: "thought test")
+    @thought = Thought.new(author: @user, text: 'thought test')
     @thought.save
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Thought' do
   end
 
   it 'should not be valid if :text is more then 150 characters' do
-    @thought.text = "a" * 251
+    @thought.text = 'a' * 251
     @thought.save
     expect(@thought).to_not be_valid
   end

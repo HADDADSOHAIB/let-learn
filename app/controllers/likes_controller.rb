@@ -4,25 +4,17 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.new(thought: @thought, user: current_user)
-  
-    if @thought && @like.save
-      respond_to do |format|
-        format.js
-      end
-    end
+    respond_to { |format| format.js } if @thought && @like.save
   end
 
   def destroy
-    p params
     @like = Like.find_by(thought: @thought, user: current_user)
-    if @thought && @like.destroy
-      respond_to do |format|
-        format.js
-      end
-    end
+
+    respond_to { |format| format.js } if @thought && @like.destroy
   end
 
   private
+
   def set_thought
     @thought = Thought.find(params[:thought_id])
   end

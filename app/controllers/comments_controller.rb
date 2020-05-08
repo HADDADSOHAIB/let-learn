@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
         format.json { render :show, status: :created, location: @comment }
         format.js
       else
-        format.html { redirect_to root_path, alert: @comment.errors.full_messages.join(". ") }
+        format.html { redirect_to root_path, alert: @comment.errors.full_messages.join('. ') }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -27,14 +27,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @thought = @comment.thought
-    if @comment.destroy
-      respond_to do |format|
-        format.js
-      end
-    end
+
+    respond_to { |format| format.js } if @comment.destroy
   end
 
   private
+
   def set_thought
     @thought = Thought.find(params[:thought_id])
   end

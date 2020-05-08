@@ -1,17 +1,16 @@
-
 require 'rails_helper'
 
 RSpec.describe 'Message' do
   before(:each) do
     @user = User.new(username: 'User',
-                      fullname: 'User',
-                      email: 'user@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'User',
+                     email: 'user@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
     @room = Room.create
 
-    @message = Message.new(user: @user, room: @room, body: "test message")
+    @message = Message.new(user: @user, room: @room, body: 'test message')
     @message.save
   end
 

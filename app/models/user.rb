@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :username, :fullname, :email, presence: true
   validates :username, length: { maximum: 20 },
-                      uniqueness: { case_sensitive: false }
+                       uniqueness: { case_sensitive: false }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, uniqueness: { case_sensitive: false },
@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_one_attached :photo
   has_one_attached :cover_image
 
@@ -31,5 +31,5 @@ class User < ApplicationRecord
 
   has_many :messages
 
-  scope :to_follow, ->current_user { where.not(id: current_user).where.not(id: current_user.followeds) }
+  scope :to_follow, ->(current_user) { where.not(id: current_user).where.not(id: current_user.followeds) }
 end

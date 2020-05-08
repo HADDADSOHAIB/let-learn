@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'JoinUserRoom' do
   before(:each) do
     @user = User.new(username: 'User',
-                      fullname: 'User',
-                      email: 'user@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'User',
+                     email: 'user@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
     @room = Room.create
 
@@ -29,7 +29,7 @@ RSpec.describe 'JoinUserRoom' do
     @join_user_room.save
     expect(@join_user_room).to_not be_valid
   end
-  
+
   it 'duplicated record are not allowed' do
     duplicated_join = JoinUserRoom.new(user: @user, room: @room)
     duplicated_join.save

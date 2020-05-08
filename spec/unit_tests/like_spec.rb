@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Following' do
   before(:each) do
     @user = User.new(username: 'User',
-                      fullname: 'User',
-                      email: 'user@example.com',
-                      password: 'password',
-                      password_confirmation: 'password')
+                     fullname: 'User',
+                     email: 'user@example.com',
+                     password: 'password',
+                     password_confirmation: 'password')
     @user.save
-    @thought = Thought.new(author: @user, text: "this a test thought")
+    @thought = Thought.new(author: @user, text: 'this a test thought')
     @thought.save
 
     @like = Like.new(thought: @thought, user: @user)

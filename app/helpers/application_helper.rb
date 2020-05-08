@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def following?(user)
     current_user.followeds.include?(user)
   end
@@ -17,14 +16,13 @@ module ApplicationHelper
   end
 
   def room_unread_messages(room)
-
     first_user = room.join_user_rooms[0]
     last_user = room.join_user_rooms[1]
-    
+
     if first_user.user_id == current_user.id
-      return (first_user.unread_messages ? first_user.unread_messages : 0)
+      (first_user.unread_messages || 0)
     else
-      return (last_user.unread_messages ? last_user.unread_messages : 0)
+      (last_user.unread_messages || 0)
     end
   end
 

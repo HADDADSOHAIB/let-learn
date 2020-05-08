@@ -4,7 +4,7 @@ class JoinUserRoomsController < ApplicationController
     room = Room.find(params[:room_id])
     first_user = room.join_user_rooms[0]
     last_user = room.join_user_rooms[1]
-    
+
     if first_user.user_id == current_user.id
       first_user.update(unread_messages: 0)
     else
@@ -12,7 +12,7 @@ class JoinUserRoomsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js { render :json => {ok: 1} }
+      format.js { render json: { ok: 1 } }
     end
   end
 end
