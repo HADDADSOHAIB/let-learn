@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     get 'followings', to: 'users#followings'
     get 'followers', to: 'users#followers'
+    get 'photo', to: 'users#photo'
+    get 'cover', to: 'users#cover'
   end
   resources :followings, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]

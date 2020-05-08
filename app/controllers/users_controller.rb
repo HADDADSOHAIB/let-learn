@@ -35,4 +35,20 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def photo
+    @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def cover
+    @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end
