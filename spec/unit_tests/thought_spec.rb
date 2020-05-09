@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Thought' do
-  let(:thought){ build(:thought) }
+  let(:thought) { build(:thought) }
   it 'should be valid' do
     assert thought.valid?
   end

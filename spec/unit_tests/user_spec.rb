@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User' do
-  let(:user){ build(:user) }
+  let(:user) { build(:user) }
 
   it 'should be valid' do
     assert user.valid?

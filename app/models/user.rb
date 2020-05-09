@@ -36,22 +36,22 @@ class User < ApplicationRecord
   validate :photo_validation
 
   def photo_validation
-    if photo.attached?
-      if !photo.blob.content_type.starts_with?('image/')
-        photo.purge
-        errors[:base] << 'Wrong format for photo, only PNG and JPG are accepted'
-      end
-    end
+    return unless photo.attached?
+
+    return if photo.blob.content_type.starts_with?('image/')
+
+    photo.purge
+    errors[:base] << 'Wrong format for photo, only PNG and JPG are accepted'
   end
 
   validate :cover_image_validation
 
   def cover_image_validation
-    if cover_image.attached?
-      if !cover_image.blob.content_type.starts_with?('image/')
-        cover_image.purge
-        errors[:base] << 'Wrong format for cover_image, only PNG and JPG are accepted'
-      end
-    end
+    return unless cover_image.attached?
+
+    return if cover_image.blob.content_type.starts_with?('image/')
+
+    cover_image.purge
+    errors[:base] << 'Wrong format for cover_image, only PNG and JPG are accepted'
   end
 end

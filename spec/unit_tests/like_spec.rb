@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Following' do
-  
-  let(:like){ build(:like)}
+  let(:like) { build(:like) }
   it 'should be valid' do
     assert like.valid?
   end

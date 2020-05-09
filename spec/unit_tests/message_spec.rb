@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Message' do
-  let(:message){ build(:message)}
+  let(:message) { build(:message) }
 
   it 'should be valid' do
     assert message.valid?

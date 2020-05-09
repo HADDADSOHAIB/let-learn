@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'JoinUserRoom' do
-  
-  let(:join_user_room){ build(:join_user_room)}
+  let(:join_user_room) { build(:join_user_room) }
   it 'should be valid' do
     assert join_user_room.valid?
   end
