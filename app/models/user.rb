@@ -32,4 +32,26 @@ class User < ApplicationRecord
   has_many :messages
 
   scope :to_follow, ->(current_user) { where.not(id: current_user).where.not(id: current_user.followeds) }
+
+  validate :photo_validation
+
+  def photo_validation
+    if photo.attached?
+      if !photo.blob.content_type.starts_with?('image/')
+        photo.purge
+        errors[:base] << 'Wrong format for photo, only PNG and JPG are accepted'
+      end
+    end
+  end
+
+  validate :cover_image_validation
+
+  def cover_image_validation
+    if cover_image.attached?
+      if !cover_image.blob.content_type.starts_with?('image/')
+        cover_image.purge
+        errors[:base] << 'Wrong format for cover_image, only PNG and JPG are accepted'
+      end
+    end
+  end
 end
