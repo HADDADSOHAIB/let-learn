@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Room' do
-  before(:each) do
-    @room = Room.create
-  end
+  let(:room){create(:room)}
 
   it 'should be valid' do
-    assert @room.valid?
+    assert room.valid?
   end
 end
+
