@@ -4,6 +4,8 @@ class Room < ApplicationRecord
 
   has_many :messages, dependent: :destroy
 
+  scope :user_rooms, -> user { user.rooms.includes(:users).order(last_message: :desc) }
+
   def self.create_room(first_user, second_user)
     rooms = Room.joins(join_user_rooms: :user).where(users: { id: first_user.id }) &
             Room.joins(join_user_rooms: :user).where(users: { id: second_user.id })
