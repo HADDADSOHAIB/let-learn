@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+
+  <%= link_to  "<i class='far fa-lightbulb fa-2x mx-3'></i>".html_safe, root_path, class: "navbar-brand" %>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if user_signed_in? %>
+      <div class="d-md-none">
+        <%= render 'layouts/sidenav' %>
+      </div>
+    <% end %>
+
+    <ul class="navbar-nav ml-auto mr-2 flex-row justify-content-around">
+      <li class="nav-item m-2">
+        <a class="nav-link" href="/"><i class="fas fa-pencil-alt"></i></a>
+      </li>
+      <li class="nav-item m-2">
+        <a class="nav-link" href="/rooms"><i class="far fa-envelope"></i></a>
+      </li>
+      <li class="nav-item m-2">
+        <a class="nav-link" href="/"><i class="fas fa-search"></i></a>
+      </li>
+      <li class="nav-item m-2">
+        <a class="nav-link" href="/me"><i class="fas fa-cog"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>

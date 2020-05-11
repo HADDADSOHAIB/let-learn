@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LetLearn</title>
+    <title>Let Learn</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%=  stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swa' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body <% if content_for?(:body_attributes) %>
+          <%= yield(:body_attributes) %> 
+        <% end %>>
+    <div class="container-fluid">
+      <div class="row">
+        <% if user_signed_in? %>
+          <div class="d-none d-md-block col-md-3 col-lg-2 p-0 sidenav">
+            <%= render 'layouts/sidenav' %>
+          </div>
+          <div class="col-12 col-md-9 col-lg-10 p-0">
+            <%= render 'layouts/navbar' %>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="col-12 p-0">
+            <%= render 'layouts/navbar' %>
+            <%= yield %>
+          </div>
+        <% end %>
+      </div>
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+

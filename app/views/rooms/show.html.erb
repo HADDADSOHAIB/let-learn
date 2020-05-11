@@ -1,0 +1,46 @@
+<% content_for(:body_attributes) do %>
+  data-turbolinks="false"
+<% end %>
+<div class="row">
+  <div class="col-12 col-md-8 pr-0">
+    <%= render  "layouts/flash" %>
+    
+    <div class="card m-4">
+      <div class="card-body messages" data-room-id="<%= @room.id %>">
+        <% @room.messages.each do |message| %>
+          <%= render 'messages/message', message: message %>
+        <% end %>
+      </div>
+      <div class="card-footer room p-1">
+        <%= form_with(url: messages_path, method: 'post') do |f| %>
+          <%= hidden_field(:message, :room_id, value: @room.id) %>
+          <div class="input-group mb-3">
+            <%= text_field :message, :body, class:"form-control", placeholder:"new messages ...", id: "new-message", required: true %>
+            <div class="input-group-append">
+              <%= f.submit "Submit", class: "btn btn-outline-dark", id: "button-addon" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 border-left full-screen-right">
+    <div>
+      <p class="mt-3 mb-1 ml-3">Conversations:</p>
+    </div>
+    <hr class="m-0">
+    <div class="home">
+      <ul class="list-group list-group-flush" id="all-rooms">
+        <% @rooms.each do |room| %>
+          <li class="list-group-item" id="room-<%= room.id %>">
+            <%= link_to  room_colleague_name(room), room_path(room), class: "black-color under-line" %>
+            <% if room_unread_messages(room) > 0 %>
+              <span class='badge badge-primary'><%= room_unread_messages(room) %></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+

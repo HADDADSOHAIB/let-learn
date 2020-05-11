@@ -1,0 +1,7 @@
+<%= form_with(url: followings_path, method: 'post', id: "follow") do |f| %>
+  <%= hidden_field(:follow, :followed_id, value: user.id) %>
+  <%= hidden_field(:follow, :follower_id, value: current_user.id) %>
+  <div class="actions">
+    <%= f.button '<i class="fas fa-plus"></i>'.html_safe, class: "btn btn-outline-dark user-options mr-2 p-2 opacity-half", id: "follow-user" %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap my-4 mx-2" id="user-<%= user.id %>">
+  <div class="d-flex">
+    <% if user.photo.attached? %>
+      <%= link_to(image_tag(user.photo, height: 60, width: 60, class: 'user-options', alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), user_path(user)) %>
+    <% else %>
+      <%= link_to(image_tag("default-photo.jpg", height: 60, width: 60, class: 'user-options'), user_path(user)) %>
+    <% end %>
+    <div class="ml-3 d-flex flex-column justify-content-center">
+      <p class="m-0"><%= link_to  user.fullname, user_path(user), class: "black-color" %></p>
+      <small class="mb-0 opacity-half"><%= link_to  "@#{user.username}", user_path(user), class: "black-color" %></small>
+    </div>
+  </div>
+  <% if following?(user) && show %>
+    <%= render 'users/unfollow', user: user %>
+  <% elsif user != current_user && show %>
+    <%= render 'users/follow', user: user %>
+  <% end %>
+</div>

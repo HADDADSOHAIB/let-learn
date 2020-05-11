@@ -1,0 +1,16 @@
+document.querySelector('#thought-comments').insertAdjacentHTML('afterbegin','<%= j render "comments/comment", comment: @comment %>');
+document.querySelector('#comment_text').value="";
+
+if(document.querySelector('#no-comments')){
+  document.querySelector('#no-comments').parentElement.removeChild(document.querySelector('#no-comments'));
+}
+
+$('#thought-<%= @thought.id %> .comment-icon').attr('data-original-title', "<%=  pluralize(@thought.comments.size, 'comment') %>.");
+
+if(document.querySelector('#thought-<%= @thought.id %> #comment-number')){
+  document.querySelector('#thought-<%= @thought.id %> #comment-number').innerText = parseInt(document.querySelector('#thought-<%= @thought.id %> #comment-number').innerText) + 1
+}
+
+$('body').tooltip({
+    selector: '[data-toggle="tooltip"]'
+});

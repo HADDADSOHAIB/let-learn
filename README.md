@@ -1,24 +1,84 @@
-# README
+# Let-Learn
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a social media plateform where people can share their learning experience, if you are learning a new skill, you can join and find, follow and inspire people by learning together.
 
-Things you may want to cover:
+## Presentation video
 
-* Ruby version
+[![Video](https://i9.ytimg.com/vi/7gN_Q1u_L9g/mq2.jpg?sqp=CPTt0vUF&rs=AOn4CLBgI8t1AcTLFFIYPl_lAsucwqS6Lw)](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
 
-* System dependencies
+## Live demo
 
-* Configuration
+[heroku live site](https://let-learn.herokuapp.com/)
 
-* Database creation
+## Environment set up requirements
 
-* Database initialization
+To run this project, you need ruby installed in your environment
+Run the following command:
 
-* How to run the test suite
+```
+$ ruby -v
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+You should have a result similar to this:
+s
+```
+ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]
+```
 
-* Deployment instructions
+If you don't get that result, follow this [link](https://www.ruby-lang.org/en/documentation/installation/) and install Ruby in your local environment.
 
-* ...
+
+### Usage
+
+If you want to test and use this project, you need to have Ruby and Rails installed  as mentioned before in your computer and clone this repository as follows:
+* `$ git clone https://github.com/HADDADSOHAIB/let-learn.git`
+
+after that you need to run the bundler
+* `$ bundle  install`
+
+then, run rails db:migrate:
+* `$ rails db:migrate`
+
+start the server
+* `$ rails server`
+
+finally you have to open it in the [browser](http://localhost:3000/)
+
+### Tests
+
+to run the test cases run the following commands
+
+
+```$ rspec```
+
+
+## Built With
+
+- Ruby
+- Ruby on Rails
+- ActionCable
+- ActiveStorage
+- bootstrap
+- CSS
+- HTML
+- JavaScript
+- JQuery
+
+## Authors
+
+👤 **HADDAD SOHAIB**
+
+- Github: [@HADDADSOHAIB](https://github.com/HADDADSOHAIB)
+- Twitter: [@HaddadSohaib](https://twitter.com/HaddadSohaib)
+- Linkedin: [linkedin](https://www.linkedin.com/in/sohaibhaddad/)
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!

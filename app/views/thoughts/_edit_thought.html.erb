@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalScrollableTitle">Update Thought:</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" >
+  <%= form_with(model: @thought, method: 'put', local: true) do |form| %>
+    <%= form.hidden_field :author_id, value: current_user.id %>
+    <div class="input-group">
+      <%= form.text_area(:text, rows: 2, id: "thought_edit_text", class: "form-control", maxlength: "250", placeholder: "THOUGHTS ABOUT SOMETHING ...") %>
+      <div class="input-group-append">
+        <%= form.submit 'Save', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
+      </div>
+    </div>
+  <% end %>
+  <small id="info-edit-thought"></small>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

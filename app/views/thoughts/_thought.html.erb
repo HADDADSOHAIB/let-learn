@@ -1,0 +1,34 @@
+<div class="d-flex my-4 mx-2" id="thought-<%= thought.id %>">
+  <% if thought.author.photo.attached? %>
+    <%= link_to(image_tag(thought.author.photo, height: 80, width: 80, alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), user_path(thought.author)) %>
+  <% else %>
+    <%= link_to(image_tag("default-photo.jpg", height: 80, width: 80), user_path(thought.author)) %>
+  <% end %>
+  <div class="ml-2 w-100">
+    <div class="d-flex justify-content-between">
+      <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
+      <small class="opacity-half"><%=  time_ago_in_words(thought.updated_at) %></small>
+    </div>
+    <small class="mb-0"><%= thought.text %></small>
+    <div class="thought-options d-flex justify-content-around align-items-start  mt-1">
+      <div class="d-flex flex-column align-items-center like-options">
+        <% if like?(thought, current_user) %>
+          <%= render 'likes/unlike_button', thought: thought %>
+        <% else %>
+          <%= render 'likes/like_button', thought: thought %>
+        <% end %>
+        <small id="like-number"><%= thought.likes.size %></small>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <%= link_to "<i class='far fa-comment'></i>".html_safe, thought_comments_path(thought), {:remote => true, class: 'opacity-half comment-icon', data: { toggle: "tooltip", placement: "bottom", title: "#{pluralize(thought.comments.size, "comment")}."}} %>
+        <small id="comment-number"><%= thought.comments.size %></small>
+      </div>
+      <% if thought.author == current_user %>
+        <span data-toggle="tooltip" data-placement="bottom" data-title="Edit">
+          <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_thought_path(thought),  {:remote => true, class: 'opacity-half', data: {target: "#modal-window", toggle: "modal"}}  %>
+        </span>
+        <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, thought_path(thought), {:remote => true, class: 'opacity-half', method: :delete, data: {confirm: 'Are you sure about deleting the thought?', toggle: "tooltip", placement: "bottom", title: "Delete"}} %>
+      <% end %>
+    </div>
+  </div>
+</div>
