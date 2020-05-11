@@ -1,0 +1,124 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap";
+@import "*";
+
+
+@media only screen and (min-width: 768px) {
+  .full-screen {
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  .full-screen-right {
+    height: 100%;
+    min-height: 88vh;
+  }
+}
+
+.vl {
+  border-left: 1px solid #222;
+  height: 50px;
+}
+
+.sidenav-link {
+  background-color: #343a40;
+  color: #eee;
+  border: none;
+  border-radius: 0px;
+}
+
+.list-group > * {
+  border-radius: 0px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.link-tab {
+  border-bottom: 3px solid $primary;
+  padding: 14px 0;
+}
+
+.profile-picture {
+  height: 40px;
+  object-fit: cover;
+}
+
+.cover-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 202px;
+}
+
+.user-options {
+  border-radius: 50%;
+}
+
+button.user-options {
+  height: fit-content;
+  border-radius: 45%;
+}
+
+
+img.user-options {
+  border: 1px #111 solid;
+}
+
+.user-info{
+  margin-right: 0;
+  margin-left:  0;
+}
+
+.sign-up {
+  background-image: url("/images/bg_signup.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.sign-in {
+  background-image: url("/images/bg_signin.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 1);
+}
+
+.white-color,
+.white-color:hover {
+  color: #eee;
+}
+
+.black-color,
+.black-color:hover {
+  color: #111;
+}
+
+.opacity-half {
+  opacity: 0.7;
+}
+
+.under-line {
+  text-decoration: underline;
+}
+
+
+
+.messages{
+  height: 400px;
+  overflow-y: auto;
+}
+
+// .conversations{
+//   height: 450px;
+//   overflow-y: auto;
+// }
+
+.card-footer.room{
+  height: 50px;
+}

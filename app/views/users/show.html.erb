@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-12 col-md-9 pr-0">
+    <div class="cover-image">
+      <% if @user.cover_image.attached? %>
+        <%= link_to image_tag(@user.cover_image, alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-cover.jpg';"), user_cover_path(@user), remote: true %>
+      <% else %>
+        <%= link_to image_tag("default-cover.jpg"), user_cover_path(@user), remote: true %>
+      <% end %>
+    </div>
+    <%= render 'home/tab' %>
+    <%= render  "layouts/flash" %>
+    
+    <div class="card m-4">
+      <div class="card-body">
+        <%= render 'thoughts/new_thought' %>
+      </div>
+    </div>
+
+    <div class="card m-4">
+      <div class="card-body">
+        <h5 class="card-title">User thoughts</h5>
+        <hr>
+        <% if @user.thoughts.size.zero? %>
+          <p>You don't have any thoughts yet</p>
+        <% else %>
+          <% @user.thoughts.each do |thought| %>
+            <%= render thought %>
+          <% end %>
+        <% end %>
+       </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-3 border-left full-screen-right p-0">
+    <div class="d-flex flex-column align-items-center">
+      <div class="d-flex m-2 align-items-center show-options">
+        <% if following?(@user) %>
+          <%= render 'users/unfollow', user: @user %>
+        <% elsif @user != current_user %>
+          <%= render 'users/follow', user: @user %>
+        <% else %>
+          <%= link_to "<i class='fas fa-user-edit'></i>".html_safe, edit_user_registration_path,  {class: "btn btn-outline-dark user-options mr-2 p-2 opacity-half", id: 'edit-options', data: { toggle: "tooltip", placement: "bottom", title: "Edit Profile."}}  %>
+        <% end %>
+        <% if @user.photo.attached? %>
+          <%= link_to image_tag(@user.photo, height: 80, width: 80, class: "user-options", alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), user_photo_path(@user), remote: true %>
+        <% else %>
+          <%= link_to image_tag("default-photo.jpg", height: 80, width: 80, class: "user-options"), user_photo_path(@user), remote: true %>
+        <% end %>
+        <button class="opacity-half btn btn-outline-dark user-options ml-2 p-2"><i class="fas fa-list"></i></button>
+      </div>
+      <p class="mb-1"><%= @user.fullname %></p>
+      <small class="opacity-half">@<%= @user.username %></small>
+    </div>
+    <hr class="mt-1 mb-0">
+    <div class="row user-info">
+      <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
+        <small><%= @user.thoughts.size %></small>
+        <small class="opacity-half">Thoughts</small>
+      </div>
+      <div class="col-4 px-0 py-2 border-left border-right d-flex flex-column align-items-center">
+        <small><%= @user.followeds.size %></small>
+        <small class="opacity-half">Followings</small>
+      </div>
+      <div class="col-4 px-0 py-2 d-flex flex-column align-items-center">
+        <small id="number-followers"><%= @user.followers.size %></small>
+        <small class="opacity-half">Followers</small>
+      </div>
+    </div>
+    <hr class="mt-0 mb-1">
+    <div>
+      <p class="m-3">Followed by:</p>
+    </div>
+    <hr>
+    <div class="user-followers">
+      <% @user.followers.each do |user| %>
+        <%= render user, show: false %>
+      <% end %>
+    </div>
+  </div>
+</div>

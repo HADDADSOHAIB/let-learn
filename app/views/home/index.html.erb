@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-12 col-md-8 pr-0">
+    <%= render 'home/tab' %>
+    <%= render  "layouts/flash" %>
+    <div class="card m-4">
+      <div class="card-body">
+        <%= render 'thoughts/new_thought' %>
+      </div>
+    </div>
+
+    <div class="card m-4">
+      <div class="card-body">
+        <h5 class="card-title">New thoughts</h5>
+        <hr>
+        <% if @thoughts.size.zero? %>
+          <p>You don't have any thoughts yet</p>
+        <% else %>
+          <%= render @thoughts %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 col-md-4 border-left full-screen-right">
+    <div>
+      <p class="m-3">Who to follow</p>
+    </div>
+    <hr>
+    <div class="home">
+    <% @to_follow.each do |user| %>
+      <%= render 'users/user', user: user, show: true %>
+    <% end %>
+    </div>
+  </div>
+  
+</div>

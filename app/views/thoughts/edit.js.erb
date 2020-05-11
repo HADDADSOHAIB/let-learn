@@ -1,0 +1,6 @@
+$("#modal-window").find(".modal-content").html("<%= j (render 'thoughts/edit_thought') %>");
+$("#modal-window").modal();
+
+$("#thought_edit_text").keyup(function(){
+  $("#info-edit-thought").text(`${(250 - $(this).val().length)}/250`);
+});

@@ -1,0 +1,40 @@
+<div class="full-screen bg-dark text-white  sticky-top position-sticky">
+  <div class="sticky-top position-sticky">
+    <div class="d-flex justify-content-center align-items-center p-3">
+      <% if current_user.photo.attached?  %>
+      <%= link_to(image_tag(current_user.photo, class: "profile-picture", alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), me_path) %>
+      <% else %>
+        <%= link_to(image_tag("default-photo.jpg", class: "profile-picture"), me_path) %>
+      <% end %>
+      <p class="mb-0 ml-3 opacity-half" id="current_user" data-id="<%= current_user.id %>"><%= link_to current_user.fullname, me_path, class: "white-color opacity-half" %></p>
+    </div>
+    <hr class="m-0">
+    <div class="row user-info">
+      <div class="col-6 px-0 py-2 border-right d-flex flex-column align-items-center border-secondary">
+        <small id="number-followings" data-toggle="modal" data-target="#myModal">
+          <%= link_to current_user.followeds.size, user_followings_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+        </small>
+        <small>
+          <%= link_to "Followings", user_followings_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
+        </small>
+      </div>
+      <div class="col-6 px-0 py-2 d-flex flex-column align-items-center">
+        <small id="number-followings" data-toggle="modal" data-target="#myModal">
+          <%= link_to current_user.followers.size, user_followers_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color'}  %>
+        </small>
+        <small>
+          <%= link_to "Followers", user_followers_path(current_user.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'white-color opacity-half'}  %>
+        </small>
+      </div>
+    </div>
+    <hr class="my-0">
+    
+    <div class="list-group">
+      <%= link_to  "<i class='fas fa-home mr-2'></i>HOME".html_safe, root_path, class: "opacity-half list-group-item list-group-item-action sidenav-link" %>
+      <%= link_to  "<i class='fas fa-user-alt mr-2'></i>PROFILE".html_safe, me_path, class: "opacity-half list-group-item list-group-item-action sidenav-link" %>
+      
+      <%= link_to  "<i class='far fa-envelope mr-2'></i>MESSAGES".html_safe+(user_unread_messages(current_user) == 0 ? "" : "<span class='badge badge-warning ml-2'>#{user_unread_messages(current_user)}</span>").html_safe, rooms_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "all-messages" %>
+      <%= link_to  "<i class='fas fa-sign-out-alt mr-2'></i>LOGOUT".html_safe, destroy_user_session_path, class: "opacity-half list-group-item list-group-item-action sidenav-link", id: "signout", method: :delete %>
+    </div>
+  </div>
+</div>

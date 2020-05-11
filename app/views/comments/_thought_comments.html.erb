@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalScrollableTitle">Thought Details:</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" >
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex" id="thought-<%= thought.id %>">
+        <% if thought.author.photo.attached? %>
+          <%= link_to(image_tag(thought.author.photo, height: 80, width: 80, alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), user_path(thought.author)) %>
+        <% else %>
+          <%= link_to(image_tag("default-photo.jpg", height: 80, width: 80), user_path(thought.author)) %>
+        <% end %>
+        <div class="ml-2 w-100">
+          <div class="d-flex justify-content-between">
+            <p class='mb-0'><%= link_to thought.author.fullname, user_path(thought.author), class: "black-color" %></p>
+            <small class="opacity-half"><%=  time_ago_in_words(thought.updated_at) %></small>
+          </div>
+          <small class="mb-0"><%= thought.text %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= form_with(model: @comment, method: 'post') do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :thought_id, value: thought.id %>
+    <div class="input-group mt-3 mb-1">
+      <%= form.text_area(:text, rows: 2, class: "form-control", maxlength: "100", placeholder: "new comment ...") %>
+      <div class="input-group-append">
+        <%= form.submit 'Comment', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
+      </div>
+    </div>
+    <small id="info-comment"></small>
+  <% end %>
+  <hr class="my-1">
+  <ul class="list-group list-group-flush" id="thought-comments">
+    <% if thought.comments.size == 0 %>
+      <p class="m-3" id="no-comments">There no comments for this thought</p>
+    <% else %>
+      <% thought.comments.each do |comment| %>
+        <%= render  "comments/comment", comment: comment %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

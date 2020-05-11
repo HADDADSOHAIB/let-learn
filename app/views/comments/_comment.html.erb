@@ -1,0 +1,23 @@
+<li class="list-group-item p-1" id="comment-<%= comment.id %>">
+  <div class="media">
+    <% if comment.user.photo.attached? %>
+      <%= link_to(image_tag(comment.user.photo, height: 50, width: 50, alt:"Image not found", onerror: "this.onerror=null;this.src='/images/default-photo.jpg';"), user_path(comment.user)) %>
+    <% else %>
+      <%= link_to(image_tag("default-photo.jpg", height: 50, width: 50), user_path(comment.user)) %>
+    <% end %>
+    <div class="media-body ml-1">
+      <div class="d-flex justify-content-between">
+        <small class='mb-0'><%= link_to comment.user.fullname, user_path(comment.user), class: "black-color" %></small>
+        <small class="opacity-half"><%=  time_ago_in_words(comment.updated_at) %></small>
+      </div>
+      <div class="w-100 d-flex justify-content-between">
+        <small>
+          <%= comment.text %>
+        </small>
+        <% if comment.user == current_user %>
+          <%= link_to "<i class='far fa-trash-alt'></i>".html_safe, comment_path(comment), {:remote => true, id: "delete-comment", class: 'opacity-half', method: :delete, data: {confirm: 'Are you sure about deleting the comment?', toggle: "tooltip", placement: "bottom", title: "Delete"}} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

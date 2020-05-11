@@ -1,0 +1,83 @@
+
+actionsf.follow = document.querySelector('.show-options #follow');
+if(actionsf.follow){
+  actionsf.follow.parentElement.removeChild(actionsf.follow);
+}
+if(document.querySelector('.show-options'))
+document.querySelector('.show-options').insertAdjacentHTML('afterbegin','<%= j render("users/unfollow", user: @user) %>');
+if(document.querySelector('.user-followers'))
+document.querySelector('.user-followers').insertAdjacentHTML('afterbegin','<%= j render("users/user", user: current_user,  show: false) %>');
+
+actionsf.number_followers = document.querySelector('#number-followers');
+if(actionsf.number_followers)
+actionsf.number_followers.innerText = parseInt(actionsf.number_followers.innerText) + 1;
+
+actionsf.number_followings = document.querySelector('#number-followings a');
+if(actionsf.number_followings)
+actionsf.number_followings.innerText = parseInt(actionsf.number_followings.innerText) + 1;
+
+actionsf.user_to_follow = document.querySelector('.home #user-<%= @user.id %>');
+if(actionsf.user_to_follow){
+  actionsf.user_to_follow.parentElement.removeChild(actionsf.user_to_follow);
+}
+
+<% if @room_id != 0 %>
+  App.chat = App.cable.subscriptions.create(
+  {
+    channel: "ChatChannel",
+    roomId: "<%= @room_id %>"
+  },
+  {
+    connected() {
+    },
+
+    disconnected() {
+    },
+
+    received(data) {
+      let messages = document.querySelector('.messages');
+      let roomId = 0;
+      if(messages){
+        roomId = document.querySelector('.messages').dataset.roomId;
+      }
+      if(!roomId) roomId=0;
+      if(messages && data.message.room_id == messages.dataset.roomId){
+        messages.insertAdjacentHTML('beforeend', data.body);
+        scroll_bottom();
+      }
+
+      let allRooms = document.querySelector("#all-rooms");
+      let room = document.querySelector(`#room-${data.message.room_id}`);
+      if(allRooms){
+        allRooms.removeChild(room);
+        allRooms.insertAdjacentElement('afterbegin',room);
+      }
+
+      if(messages && document.querySelector(`#room-${data.message.room_id}`) 
+        && roomId != data.message.room_id && room.querySelector('.badge')){
+        room.querySelector('.badge').textContent = parseInt(room.querySelector('.badge').textContent ) + 1
+      }
+      else if(messages && document.querySelector(`#room-${data.message.room_id}`) 
+        && roomId != data.message.room_id){
+        room.insertAdjacentHTML('beforeend',"<span class='badge badge-primary'>1</span>")
+      }
+
+      let current_user_id = document.querySelector('#current_user').dataset.id;
+      let all_messages = document.querySelector('#all-messages');
+      if(current_user_id && data.message.user_id != current_user_id && !all_messages.querySelector('.badge')
+        && roomId != data.message.room_id){
+        all_messages.insertAdjacentHTML('beforeend',"<span class='badge badge-warning ml-2'>1</span>")
+      }
+      else if(current_user_id && data.message.user_id != current_user_id && roomId != data.message.room_id){
+        all_messages.querySelector('.badge').textContent = parseInt(all_messages.querySelector('.badge').textContent ) + 1;
+      }
+
+
+      if(messages && data.message.room_id == messages.dataset.roomId && current_user_id == data.message.user_id){
+        document.querySelector('#new-message').value="";
+      }
+
+      update_unread();
+    }
+  });
+<% end %>

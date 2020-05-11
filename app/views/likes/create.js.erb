@@ -1,0 +1,13 @@
+if(document.querySelector('#thought-<%= @thought.id %> #like-options')){
+  $('#thought-<%= @thought.id %> #like-options').tooltip('hide');
+  document.querySelector('#thought-<%= @thought.id %> #like-options')
+    .parentElement.removeChild(document.querySelector('#thought-<%= @thought.id %> #like-options'));
+}
+
+document.querySelector('#thought-<%= @thought.id %> .like-options')
+  .insertAdjacentHTML('afterbegin',"<%= j render 'likes/unlike_button', thought: @thought %>");
+$('#thought-<%= @thought.id %> #unlike-options').tooltip('show');
+
+if(document.querySelector('#thought-<%= @thought.id %> #like-number')){
+  document.querySelector('#thought-<%= @thought.id %> #like-number').innerText = parseInt(document.querySelector('#thought-<%= @thought.id %> #like-number').innerText) + 1
+}

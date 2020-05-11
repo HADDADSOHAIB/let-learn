@@ -1,0 +1,23 @@
+<%= form_with(model: @thought, method: 'post', local: true) do |form| %>
+  <% if @thought.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-warning" role="alert">
+      <h6><%= pluralize(@thought.errors.count, "error") %> prohibited this user from being saved:</h6>
+
+      <ul>
+      <% @thought.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      </div>
+    </div>
+  <% end %>
+  <%= form.hidden_field :author_id, value: current_user.id %>
+  <div class="input-group">
+    <%= form.text_area(:text, rows: 2, class: "form-control", maxlength: "250", placeholder: "THOUGHTS ABOUT SOMETHING ...") %>
+    <div class="input-group-append">
+      <%= form.submit 'Publish', class: 'btn btn-outline-secondary', id: 'button-addon2' %>
+    </div>
+  </div>
+<% end %>
+<small id="info-thought"></small>
