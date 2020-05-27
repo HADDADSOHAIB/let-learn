@@ -1,10 +1,10 @@
 # Let-Learn
 
-This project is a social media plateform where people can share their learning experience, if you are learning a new skill, you can join and find, follow and inspire people by learning together.
+This project is a social media platform where people can share their learning experience, if you are learning a new skill, you can join and find, follow, and inspire people by learning together. Alone you can go so fast, but together we can go so far.
 
 ## Presentation video
 
-[![Video](https://i9.ytimg.com/vi/7gN_Q1u_L9g/mq2.jpg?sqp=CPTt0vUF&rs=AOn4CLBgI8t1AcTLFFIYPl_lAsucwqS6Lw)](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
+[video link](https://www.youtube.com/watch?v=7gN_Q1u_L9g)
 
 ## Live demo
 
