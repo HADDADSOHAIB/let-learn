@@ -1,6 +1,7 @@
 # Let-Learn
 
 This project is a social media platform where people can share their learning experience, if you are learning a new skill, you can join and find, follow, and inspire people by learning together. Alone you can go so fast, but together we can go so far.
+Build as Ruby On Rails application with active storage and Postgres to handle database, Action Cable, and Redis to handle real-time-communication and Active storage for storing assets.
 
 ## Presentation video
 
@@ -9,6 +10,12 @@ This project is a social media platform where people can share their learning ex
 ## Live demo
 
 [heroku live site](https://let-learn.herokuapp.com/)
+
+![start](/public/imgages/readme/1.png)
+![start](/public/imgages/readme/2.png)
+![start](/public/imgages/readme/3.png)
+![start](/public/imgages/readme/4.png)
+![start](/public/imgages/readme/5.png)
 
 ## Environment set up requirements
 
