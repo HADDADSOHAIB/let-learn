@@ -11,11 +11,11 @@ Build as Ruby On Rails application with active storage and Postgres to handle da
 
 [heroku live site](https://let-learn.herokuapp.com/)
 
-![start](/public/imgages/readme/1.png)
-![start](/public/imgages/readme/2.png)
-![start](/public/imgages/readme/3.png)
-![start](/public/imgages/readme/4.png)
-![start](/public/imgages/readme/5.png)
+![start](/public/images/readme/1.png)
+![start](/public/images/readme/2.png)
+![start](/public/images/readme/3.png)
+![start](/public/images/readme/4.png)
+![start](/public/images/readme/5.png)
 
 ## Environment set up requirements
 
